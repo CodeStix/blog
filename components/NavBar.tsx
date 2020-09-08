@@ -26,8 +26,9 @@ const NavName = styled.span`
     flex-direction: column;
     justify-content: center;
     font-size: 2em;
+    flex-grow: 1; /* push other nav items to the right */
     transition: 200ms;
-    transition: transform 100ms;
+    transition: transform 100ms, letter-spacing 200ms;
     transform: scaleY(1);
 
     &:hover {
