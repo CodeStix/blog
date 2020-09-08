@@ -16,10 +16,10 @@ const Description = styled.p`
 
 export default function BigTitle({ title, description, color }: BigTitleProps) {
     return (
-        <div>
+        <>
             <Title color={color} title={title} />
             {description && <Description>{description}</Description>}
             <Separator color={color} />
-        </div>
+        </>
     );
 }

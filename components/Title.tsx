@@ -5,6 +5,10 @@ const TitleHeader = styled.h2`
     margin: 1em 0em 0.5em 0em;
     color: ${(props) => props.color ?? "white"};
     font-size: 1.8em;
+
+    &:first-child {
+        margin-top: 0;
+    }
 `;
 
 type TitleProps = {
