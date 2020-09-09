@@ -6,4 +6,5 @@ export type Article = {
     href: string;
     modified: number;
     type: "project" | "post";
+    tease?: string;
 };

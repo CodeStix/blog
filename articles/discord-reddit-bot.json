@@ -3,5 +3,6 @@
     "name": "Reddit Discord bot",
     "themeColor": "#FFA800",
     "thumbnail": "/image/reddit.png",
-    "type": "project"
+    "type": "project",
+    "tease": "Click here to read how you can use it yourself and how I made it."
 }

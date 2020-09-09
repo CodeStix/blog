@@ -30,14 +30,16 @@ const OverlayLink = styled.a`
     height: 100%;
     z-index: 1;
     display: flex;
-    background-color: #0008;
+    background-color: #0009;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     opacity: 0;
     transition: opacity 200ms;
     font-size: 1.4em;
+    text-align: center;
     font-weight: bold;
+    text-decoration: none;
     /* display: none; */
 
     &:hover {
@@ -50,7 +52,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
     return (
         <Card color={article.themeColor}>
             <Link href="/article/[name]" as={article.href} passHref>
-                <OverlayLink>Click to check it out</OverlayLink>
+                <OverlayLink>{article.tease ?? "Click here to read more!"}</OverlayLink>
             </Link>
             <Header>
                 <Title color={article.themeColor} title={article.name} />
