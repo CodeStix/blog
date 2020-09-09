@@ -3,16 +3,10 @@ import Card from "./Card";
 import Title from "./Title";
 import styled from "styled-components";
 import Link from "next/link";
-
-type Project = {
-    themeColor: string;
-    name: string;
-    description: string;
-    image?: string;
-};
+import { Article } from "../shared/Article";
 
 type ProjectCardProps = {
-    project: Project;
+    project: Article;
 };
 
 const Header = styled.div`
@@ -28,7 +22,7 @@ const Thumbnail = styled.div<{ src: string }>`
     background-position: top;
 `;
 
-const Overlay = styled.div`
+const OverlayLink = styled.a`
     position: absolute;
     top: 0;
     left: 0;
@@ -55,14 +49,14 @@ const Overlay = styled.div`
 export default function ProjectCard({ project }: ProjectCardProps) {
     return (
         <Card color={project.themeColor}>
-            <Link href="/new">
-                <Overlay>Click to check it out</Overlay>
+            <Link href="/project/[name]" as={project.href} passHref>
+                <OverlayLink>Click to check it out</OverlayLink>
             </Link>
             <Header>
                 <Title color={project.themeColor} title={project.name} />
                 <p>{project.description}</p>
             </Header>
-            {project.image && <Thumbnail src={project.image} />}
+            {project.thumbnail && <Thumbnail src={project.thumbnail} />}
         </Card>
     );
 }
