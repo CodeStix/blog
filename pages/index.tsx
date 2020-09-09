@@ -5,6 +5,7 @@ import CenterContainer from "../components/CenterContainer";
 import BigTitle from "../components/BigTitle";
 import Title from "../components/Title";
 import Card from "../components/Card";
+import ProjectCard from "../components/ProjectCard";
 
 export default function Index() {
     return (
@@ -12,14 +13,22 @@ export default function Index() {
             <NavBar />
             <CenterContainer>
                 <Title title="Projects" />
-                <Card color="#00A3FF">
-                    <Title title="Beat-360fyer" color="#00A3FF" />
-                    <p>Use this tool to convert a standard Beat Saber level into a 360 degree one!</p>
-                </Card>
-                <Card color="#FFA800">
-                    <Title title="Reddit Discord bot" color="#FFA800" />
-                    <p>An amazing Discord bot that connects with reddit. Has video downloading support, 50/50 spoilers ...</p>
-                </Card>
+                <ProjectCard
+                    project={{
+                        description: "Use this tool to convert a standard Beat Saber level into a 360 degree one!",
+                        name: "Beat-360fyer",
+                        themeColor: "#00A3FF",
+                        image: "/image/360.png",
+                    }}
+                />
+                <ProjectCard
+                    project={{
+                        description: "An amazing Discord bot that connects with reddit. Has video downloading support, 50/50 spoilers ...",
+                        name: "Reddit Discord bot",
+                        themeColor: "#FFA800",
+                        image: "/image/reddit.png",
+                    }}
+                />
             </CenterContainer>
         </>
     );
