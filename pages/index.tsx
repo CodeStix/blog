@@ -5,23 +5,28 @@ import CenterContainer from "../components/CenterContainer";
 import BigTitle from "../components/BigTitle";
 import Title from "../components/Title";
 import Card from "../components/Card";
-import ProjectCard from "../components/ArticleCard";
-import { readArticleNames, getArticleWithName } from "../server/projectLoader";
+import ArticleCard from "../components/ArticleCard";
+import { readArticleNames, getArticleWithName } from "../server/articleLoader";
 import { Article } from "../shared/Article";
 
 type IndexProps = {
     recentProjects: Article[];
+    recentPosts: Article[];
 };
 
-export default function Index({ recentProjects }: IndexProps) {
+export default function Index({ recentProjects, recentPosts }: IndexProps) {
     return (
         <>
             <NavBar />
             <CenterContainer>
-                <Title title="Recent projects" />
+                <Title title="Recent posts" />
+                {recentPosts.map((post) => (
+                    <ArticleCard key={post.name} article={post} />
+                ))}
 
+                <Title title="Recent projects" />
                 {recentProjects.map((project) => (
-                    <ProjectCard key={project.name} project={project} />
+                    <ArticleCard key={project.name} article={project} />
                 ))}
             </CenterContainer>
         </>
@@ -31,8 +36,10 @@ export default function Index({ recentProjects }: IndexProps) {
 // called on server
 export const getStaticProps: GetStaticProps = async function () {
     var articles = await Promise.all((await readArticleNames()).map((art) => getArticleWithName(art)));
+    articles = articles.sort((a, b) => b.modified - a.modified);
     var props: IndexProps = {
-        recentProjects: articles.sort((a, b) => b.modified - a.modified).splice(0, 2),
+        recentProjects: articles.filter((e) => e.type === "project").splice(0, 2),
+        recentPosts: articles.filter((e) => e.type === "post").splice(0, 2),
     };
 
     return {

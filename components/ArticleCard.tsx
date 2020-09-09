@@ -5,8 +5,8 @@ import styled from "styled-components";
 import Link from "next/link";
 import { Article } from "../shared/Article";
 
-type ProjectCardProps = {
-    project: Article;
+type ArticleCardProps = {
+    article: Article;
 };
 
 const Header = styled.div`
@@ -46,17 +46,17 @@ const OverlayLink = styled.a`
     }
 `;
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ArticleCard({ article }: ArticleCardProps) {
     return (
-        <Card color={project.themeColor}>
-            <Link href="/project/[name]" as={project.href} passHref>
+        <Card color={article.themeColor}>
+            <Link href="/article/[name]" as={article.href} passHref>
                 <OverlayLink>Click to check it out</OverlayLink>
             </Link>
             <Header>
-                <Title color={project.themeColor} title={project.name} />
-                <p>{project.description}</p>
+                <Title color={article.themeColor} title={article.name} />
+                <p>{article.description}</p>
             </Header>
-            {project.thumbnail && <Thumbnail src={project.thumbnail} />}
+            {article.thumbnail && <Thumbnail src={article.thumbnail} />}
         </Card>
     );
 }

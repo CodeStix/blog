@@ -7,14 +7,14 @@ import { Article } from "../shared/Article";
 const readdirAsync = util.promisify(fs.readdir);
 const readFileAsync = util.promisify(fs.readFile);
 const statFileAsync = util.promisify(fs.stat);
-export const projectsDir = path.join(process.cwd(), "projects");
+export const articlesDir = path.join(process.cwd(), "articles");
 
 export async function readArticleNames(): Promise<string[]> {
     var files;
     try {
-        files = await readdirAsync(projectsDir);
+        files = await readdirAsync(articlesDir);
     } catch (ex) {
-        console.error("Could not read projects folder: " + ex);
+        console.error("Could not read articles folder: " + ex);
         return [];
     }
 
@@ -26,7 +26,7 @@ export async function readArticleNames(): Promise<string[]> {
         } else if (file.endsWith(".md")) {
             continue;
         } else {
-            console.warn("Unknown project page file: " + file);
+            console.warn("Unknown article page file: " + file);
         }
     }
     return paths;
@@ -34,7 +34,7 @@ export async function readArticleNames(): Promise<string[]> {
 
 export async function getMarkdownForArticle(name: string): Promise<string> {
     try {
-        return await readFileAsync(path.join(projectsDir, name + ".md"), { encoding: "utf8" });
+        return await readFileAsync(path.join(articlesDir, name + ".md"), { encoding: "utf8" });
     } catch (ex) {
         console.error("Could not read article markdown: " + ex);
         return null;
@@ -43,12 +43,12 @@ export async function getMarkdownForArticle(name: string): Promise<string> {
 
 export async function getArticleWithName(name: string): Promise<Article> {
     try {
-        const filePath = path.join(projectsDir, name + ".json");
+        const filePath = path.join(articlesDir, name + ".json");
         var stat = await statFileAsync(filePath);
         var json = await readFileAsync(filePath, { encoding: "utf8" });
         var article: Article = JSON.parse(json);
         article.modified = stat.mtimeMs;
-        article.href = `/project/${name}`;
+        article.href = `/article/${name}`;
         return article;
     } catch (ex) {
         console.error("Could not read article metadata: " + ex);

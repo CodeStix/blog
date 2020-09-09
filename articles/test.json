@@ -2,5 +2,6 @@
     "color": "yellow",
     "thumbnail": "/image/reddit.png",
     "name": "Testing project",
-    "description": "This is a testing project"
+    "description": "This is a testing project",
+    "type": "project"
 }

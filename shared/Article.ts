@@ -5,4 +5,5 @@ export type Article = {
     thumbnail?: string;
     href: string;
     modified: number;
+    type: "project" | "post";
 };

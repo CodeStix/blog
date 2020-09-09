@@ -4,14 +4,14 @@ import CenterContainer from "../../components/CenterContainer";
 import NavBar from "../../components/NavBar";
 import { Article } from "../../shared/Article";
 import BigTitle from "../../components/BigTitle";
-import { getArticleWithName, getMarkdownForArticle, readArticleNames } from "../../server/projectLoader";
+import { getArticleWithName, getMarkdownForArticle, readArticleNames } from "../../server/articleLoader";
 
-type ProjectProps = {
+type ArticlePageProps = {
     article: Article;
     markdown: string;
 };
 
-export default function ProjectPage({ article }: ProjectProps) {
+export default function ArticlePage({ article }: ArticlePageProps) {
     return (
         <>
             <NavBar />
@@ -24,7 +24,7 @@ export default function ProjectPage({ article }: ProjectProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async function () {
-    var paths = await (await readArticleNames()).map((name) => `/project/${name}`);
+    var paths = await (await readArticleNames()).map((name) => `/article/${name}`);
     return {
         fallback: false,
         paths,
@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     var article = await getArticleWithName(name);
     var markdown = await getMarkdownForArticle(name);
 
-    var props: ProjectProps = {
+    var props: ArticlePageProps = {
         markdown,
         article,
     };
