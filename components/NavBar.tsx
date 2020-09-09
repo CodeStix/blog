@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Link from "next/link";
 
 const Nav = styled.div`
-    height: 5em;
+    height: 4em;
     display: flex;
 `;
 
@@ -12,8 +12,8 @@ const NavIcon = styled.div`
     background: url("/image/kutnocoffeedarktrans.png");
     background-repeat: no-repeat;
     background-size: contain;
-    height: 5em;
-    width: 5em;
+    height: 4em;
+    width: 4em;
     margin-right: 1.5em;
 `;
 
@@ -25,7 +25,7 @@ const NavName = styled.span`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 2em;
+    font-size: 1.5em;
     flex-grow: 1; /* push other nav items to the right */
     transition: 200ms;
     transition: transform 100ms, letter-spacing 200ms;
