@@ -3,6 +3,8 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import CenterContainer from "../../components/CenterContainer";
 import NavBar from "../../components/NavBar";
 import { Article } from "../../shared/Article";
+import BigTitle from "../../components/BigTitle";
+import { getArticleWithName, getMarkdownForArticle, readArticleNames } from "../../server/projectLoader";
 
 type ProjectProps = {
     article: Article;
@@ -20,9 +22,6 @@ export default function ProjectPage({ article }: ProjectProps) {
         </>
     );
 }
-
-import { getArticleWithName, getMarkdownForArticle, readArticleNames } from "../../server/projectLoader";
-import BigTitle from "../../components/BigTitle";
 
 export const getStaticPaths: GetStaticPaths = async function () {
     var paths = await (await readArticleNames()).map((name) => `/project/${name}`);

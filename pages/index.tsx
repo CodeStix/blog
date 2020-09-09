@@ -6,40 +6,37 @@ import BigTitle from "../components/BigTitle";
 import Title from "../components/Title";
 import Card from "../components/Card";
 import ProjectCard from "../components/ArticleCard";
+import { readArticleNames, getArticleWithName } from "../server/projectLoader";
+import { Article } from "../shared/Article";
 
-export default function Index() {
+type IndexProps = {
+    recentProjects: Article[];
+};
+
+export default function Index({ recentProjects }: IndexProps) {
     return (
         <>
             <NavBar />
             <CenterContainer>
-                <Title title="Projects" />
-                <ProjectCard
-                    project={{
-                        id: 0,
-                        description: "Use this tool to convert a standard Beat Saber level into a 360 degree one!",
-                        name: "Beat-360fyer",
-                        themeColor: "#00A3FF",
-                        image: "/image/360.png",
-                    }}
-                />
-                <ProjectCard
-                    project={{
-                        id: 1,
-                        description: "An amazing Discord bot that connects with reddit. Has video downloading support, 50/50 spoilers ...",
-                        name: "Reddit Discord bot",
-                        themeColor: "#FFA800",
-                        image: "/image/reddit.png",
-                    }}
-                />
+                <Title title="Recent projects" />
+
+                {recentProjects.map((project) => (
+                    <ProjectCard key={project.name} project={project} />
+                ))}
             </CenterContainer>
         </>
     );
 }
 
 // called on server
-export const getStaticProp: GetStaticProps = async function ({ params }) {
+export const getStaticProps: GetStaticProps = async function () {
+    var articles = await Promise.all((await readArticleNames()).map((art) => getArticleWithName(art)));
+    var props: IndexProps = {
+        recentProjects: articles.sort((a, b) => b.modified - a.modified).splice(0, 2),
+    };
+
     return {
-        props: {},
+        props,
         revalidate: 10,
     };
 };

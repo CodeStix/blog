@@ -4,4 +4,5 @@ export type Article = {
     description: string;
     thumbnail?: string;
     href: string;
+    modified: number;
 };

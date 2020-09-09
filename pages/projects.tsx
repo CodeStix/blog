@@ -33,26 +33,6 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     var props: ProjectsProps = {
         projects: articles,
     };
-
-    /*var props: ProjectsProps = {
-        projects: [
-            {
-                id: 0,
-                description: "Use this tool to convert a standard Beat Saber level into a 360 degree one!",
-                name: "Beat-360fyer",
-                themeColor: "#00A3FF",
-                image: "/image/360.png",
-            },
-            {
-                id: 1,
-                description: "An amazing Discord bot that connects with reddit. Has video downloading support, 50/50 spoilers ...",
-                name: "Reddit Discord bot",
-                themeColor: "#FFA800",
-                image: "/image/reddit.png",
-            },
-        ],
-    };*/
-
     return {
         props,
     };

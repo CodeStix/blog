@@ -6,6 +6,7 @@ import { Article } from "../shared/Article";
 
 const readdirAsync = util.promisify(fs.readdir);
 const readFileAsync = util.promisify(fs.readFile);
+const statFileAsync = util.promisify(fs.stat);
 export const projectsDir = path.join(process.cwd(), "projects");
 
 export async function readArticleNames(): Promise<string[]> {
@@ -42,8 +43,11 @@ export async function getMarkdownForArticle(name: string): Promise<string> {
 
 export async function getArticleWithName(name: string): Promise<Article> {
     try {
-        var json = await readFileAsync(path.join(projectsDir, name + ".json"), { encoding: "utf8" });
+        const filePath = path.join(projectsDir, name + ".json");
+        var stat = await statFileAsync(filePath);
+        var json = await readFileAsync(filePath, { encoding: "utf8" });
         var article: Article = JSON.parse(json);
+        article.modified = stat.mtimeMs;
         article.href = `/project/${name}`;
         return article;
     } catch (ex) {
