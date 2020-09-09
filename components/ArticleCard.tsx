@@ -20,6 +20,7 @@ const Thumbnail = styled.div<{ src: string }>`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
+    border-radius: 1em 1em 0 0;
 `;
 
 const OverlayLink = styled.a`
