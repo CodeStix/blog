@@ -15,7 +15,8 @@ type ArticlePageProps = {
 };
 
 const MarkdownContainer = styled.div<{ color: string }>`
-    font-size: 1.1em;
+    margin-bottom: 10em;
+
     h1,
     h2,
     h3,
@@ -104,6 +105,10 @@ const MarkdownContainer = styled.div<{ color: string }>`
         background-color: #0005;
         padding: 0.3em 0.5em;
         border-radius: 0.3em;
+    }
+
+    img {
+        max-width: 100%;
     }
 `;
 

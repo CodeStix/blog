@@ -6,12 +6,15 @@ const OuterContainer = styled.div`
     width: 100%;
     justify-content: center;
     margin-bottom: 2em;
+    padding: 0 10px;
 `;
 
 const InnerContainer = styled.div`
     position: relative;
     max-width: 1000px;
     width: 1000px;
+    min-width: 100px;
+    overflow: hidden;
 `;
 
 type CenterContainerProps = {
