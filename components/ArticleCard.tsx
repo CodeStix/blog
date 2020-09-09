@@ -4,6 +4,8 @@ import Title from "./Title";
 import styled from "styled-components";
 import Link from "next/link";
 import { Article } from "../shared/Article";
+import { Carousel } from "react-responsive-carousel";
+import ReactPlayer from "react-player";
 
 type ArticleCardProps = {
     article: Article;
@@ -13,14 +15,28 @@ const Header = styled.div`
     padding: 0.8em;
 `;
 
-const Thumbnail = styled.div<{ src: string }>`
+const ThumbnailVideo = styled.div`
     width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    border-radius: 1em 1em 0 0;
+    overflow: hidden;
+
+    iframe {
+        margin: unset !important;
+        width: 100% !important;
+    }
+`;
+
+const ThumbnailImage = styled.div<{ src: string }>`
+    width: 100%;
+    height: 350px;
+    border-radius: 1em 1em 0 0;
     background: url("${(props) => props.src}");
-    height: 300px;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top;
-    border-radius: 1em 1em 0 0;
+    background-position: left;
 `;
 
 const OverlayLink = styled.a`
@@ -49,7 +65,21 @@ const OverlayLink = styled.a`
     }
 `;
 
+function Thumbnail({ src, isSelected }: { src: string; isSelected?: boolean }) {
+    if (src.startsWith("https://www.youtube.com/") || src.endsWith(".mp4")) {
+        return (
+            <ThumbnailVideo>
+                <ReactPlayer width="100%" height="100%" controls={false} url={src} playing={isSelected} loop={true} muted={true} />
+            </ThumbnailVideo>
+        );
+    } else {
+        return <ThumbnailImage src={src} />;
+    }
+}
+
 export default function ArticleCard({ article }: ArticleCardProps) {
+    const customRenderItem = (item, props) => <item.type {...item.props} {...props} />;
+
     return (
         <Card color={article.themeColor}>
             <Link href="/article/[name]" as={article.href} passHref>
@@ -59,7 +89,21 @@ export default function ArticleCard({ article }: ArticleCardProps) {
                 <Title color={article.themeColor} title={article.name} />
                 <p>{article.description}</p>
             </Header>
-            {article.thumbnail && <Thumbnail src={article.thumbnail} />}
+            {article.imagesVideos && (
+                <Carousel
+                    renderItem={customRenderItem}
+                    autoPlay={true}
+                    interval={3000}
+                    infiniteLoop={true}
+                    showThumbs={false}
+                    showArrows={false}
+                    showStatus={false}
+                >
+                    {article.imagesVideos.map((src, i) => (
+                        <Thumbnail key={i} src={src} />
+                    ))}
+                </Carousel>
+            )}
         </Card>
     );
 }
