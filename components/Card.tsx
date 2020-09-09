@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const CardDiv = styled.div`
+    position: relative;
     border-radius: 1em;
-    width: 100%;
+    /* width: 100%; */
     border: 0.4em solid ${(props) => props.color ?? "#fff1"};
     margin: 2em 0;
-    padding: 0.8em;
+    /* flex-basis: 50%; */
+    overflow: hidden;
 `;
 
 type CardProps = {

@@ -9,8 +9,9 @@ const OuterContainer = styled.div`
 `;
 
 const InnerContainer = styled.div`
+    position: relative;
     max-width: 1000px;
-    min-width: 1000px;
+    width: 1000px;
 `;
 
 type CenterContainerProps = {
