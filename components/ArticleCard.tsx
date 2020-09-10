@@ -47,10 +47,6 @@ const CarouselContainer = styled.div`
 `;
 
 export default function ArticleCard({ article }: ArticleCardProps) {
-    const customRenderItem = (item, props) => (
-        <item.type {...item.props} {...props} />
-    );
-
     return (
         <Card color={article.themeColor}>
             <Link href="/article/[name]" as={article.href} passHref>
