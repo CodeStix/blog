@@ -93,7 +93,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
                 <Carousel
                     renderItem={customRenderItem}
                     autoPlay={true}
-                    interval={3000}
+                    interval={5000}
                     infiniteLoop={true}
                     showThumbs={false}
                     showArrows={false}
