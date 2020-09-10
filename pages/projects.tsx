@@ -5,7 +5,7 @@ import NavBar from "../components/NavBar";
 import CenterContainer from "../components/CenterContainer";
 import BigTitle from "../components/BigTitle";
 import ArticleCard from "../components/ArticleCard";
-import { readArticleNames, getArticleWithName } from "../server/articleLoader";
+import { getArticles } from "../server/articleLoader";
 
 type ProjectsProps = {
     projects: Article[];
@@ -29,7 +29,8 @@ export default function Projects({ projects }: ProjectsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async function ({ params }) {
-    var articles = await Promise.all((await readArticleNames()).map((art) => getArticleWithName(art)));
+    var articles = await getArticles();
+    // var articles = await Promise.all((await readArticlePaths()).map((art) => getArticleWithName(art)));
     var props: ProjectsProps = {
         projects: articles.filter((e) => e.type === "project"),
     };

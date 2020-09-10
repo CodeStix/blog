@@ -1,3 +1,15 @@
+---
+description: An amazing Discord bot that connects with reddit. Has video downloading support, 50/50 spoilers ...
+name: Reddit Discord bot
+themeColor: "#FFA800"
+thumbnails:
+    - /image/reddit.png
+    - /image/360.png
+    - https://www.youtube.com/watch?v=4yvY-tYh0bM
+type: project
+tease: Click here to read how you can use it yourself and how I made it.
+---
+
 # An h1 header
 
 Paragraphs are separated by a blank line.

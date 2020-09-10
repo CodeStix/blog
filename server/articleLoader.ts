@@ -3,14 +3,15 @@ import process from "process";
 import util from "util";
 import fs from "fs";
 import { Article } from "../shared/Article";
+import matter from "gray-matter";
 
 const readdirAsync = util.promisify(fs.readdir);
 const readFileAsync = util.promisify(fs.readFile);
 const statFileAsync = util.promisify(fs.stat);
 export const articlesDir = path.join(process.cwd(), "articles");
 
-export async function readArticleNames(): Promise<string[]> {
-    var files;
+export async function getArticles(): Promise<Article[]> {
+    var files: string[] = [];
     try {
         files = await readdirAsync(articlesDir);
     } catch (ex) {
@@ -18,34 +19,42 @@ export async function readArticleNames(): Promise<string[]> {
         return [];
     }
 
-    var paths = [];
+    var articles = [];
     for (let i = 0; i < files.length; i++) {
         var file = files[i];
-        if (file.endsWith(".json")) {
-            paths.push(path.basename(file, ".json"));
-        } else if (file.endsWith(".md")) {
+        if (!file.endsWith(".md")) {
+            console.log("Unknown file", file);
             continue;
-        } else {
-            console.warn("Unknown article page file: " + file);
         }
-    }
-    return paths;
-}
 
-export async function getMarkdownForArticle(name: string): Promise<string> {
-    try {
-        return await readFileAsync(path.join(articlesDir, name + ".md"), { encoding: "utf8" });
-    } catch (ex) {
-        console.error("Could not read article markdown: " + ex);
-        return null;
+        const name = path.basename(file, ".md");
+        articles.push(await getArticleWithName(name));
     }
+
+    return articles;
 }
 
 export async function getArticleWithName(name: string): Promise<Article> {
-    try {
+    const file = path.join(articlesDir, name + ".md");
+    var stat = await statFileAsync(file);
+    var md = await readFileAsync(file, {
+        encoding: "utf8",
+    });
+
+    const meta = matter(md);
+    return {
+        modified: stat.mtimeMs,
+        href: `/article/${name}`,
+        markdown: meta.content,
+        ...meta.data,
+    } as Article;
+
+    /*try {
         const filePath = path.join(articlesDir, name + ".json");
         var stat = await statFileAsync(filePath);
-        var json = await readFileAsync(filePath, { encoding: "utf8" });
+        var json = await readFileAsync(filePath, {
+            encoding: "utf8",
+        });
         var article: Article = JSON.parse(json);
         article.modified = stat.mtimeMs;
         article.href = `/article/${name}`;
@@ -53,5 +62,5 @@ export async function getArticleWithName(name: string): Promise<Article> {
     } catch (ex) {
         console.error("Could not read article metadata: " + ex);
         return null;
-    }
+    }*/
 }

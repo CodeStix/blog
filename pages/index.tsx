@@ -6,7 +6,7 @@ import BigTitle from "../components/BigTitle";
 import Title from "../components/Title";
 import Card from "../components/Card";
 import ArticleCard from "../components/ArticleCard";
-import { readArticleNames, getArticleWithName } from "../server/articleLoader";
+import { getArticles } from "../server/articleLoader";
 import { Article } from "../shared/Article";
 
 type IndexProps = {
@@ -35,10 +35,12 @@ export default function Index({ recentProjects, recentPosts }: IndexProps) {
 
 // called on server
 export const getStaticProps: GetStaticProps = async function () {
-    var articles = await Promise.all((await readArticleNames()).map((art) => getArticleWithName(art)));
+    var articles = await getArticles();
     articles = articles.sort((a, b) => b.modified - a.modified);
     var props: IndexProps = {
-        recentProjects: articles.filter((e) => e.type === "project").splice(0, 2),
+        recentProjects: articles
+            .filter((e) => e.type === "project")
+            .splice(0, 2),
         recentPosts: articles.filter((e) => e.type === "post").splice(0, 2),
     };
 

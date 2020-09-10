@@ -89,7 +89,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
                 <Title color={article.themeColor} title={article.name} />
                 <p>{article.description}</p>
             </Header>
-            {article.imagesVideos && (
+            {article.thumbnails && (
                 <Carousel
                     renderItem={customRenderItem}
                     autoPlay={true}
@@ -99,7 +99,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
                     showArrows={false}
                     showStatus={false}
                 >
-                    {article.imagesVideos.map((src, i) => (
+                    {article.thumbnails.map((src, i) => (
                         <Thumbnail key={i} src={src} />
                     ))}
                 </Carousel>

@@ -1,9 +1,0 @@
-{
-    "description": "A bukkit server plugin to create any variation of the default cobblestone generator.",
-    "name": "Minecraft Custom Generators",
-    "themeColor": "#88FF00",
-    "imagesVideos": [
-        "/image/360.png"
-    ],
-    "type": "project"
-}

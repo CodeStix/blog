@@ -4,14 +4,18 @@ import CenterContainer from "../../components/CenterContainer";
 import NavBar from "../../components/NavBar";
 import { Article } from "../../shared/Article";
 import BigTitle from "../../components/BigTitle";
-import { getArticleWithName, getMarkdownForArticle, readArticleNames } from "../../server/articleLoader";
+import {
+    getArticleWithName,
+    getMarkdownForArticle,
+    readArticlePaths,
+    getArticles,
+} from "../../server/articleLoader";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import hljs from "highlight.js";
 
 type ArticlePageProps = {
     article: Article;
-    markdown: string;
 };
 
 const MarkdownContainer = styled.div<{ color: string }>`
@@ -121,34 +125,44 @@ function CodeBlock(props: { value: string; language?: string }) {
 
     return (
         <pre>
-            <code ref={codeRef} className={props.language && `language-${props.language}`}>
+            <code
+                ref={codeRef}
+                className={props.language && `language-${props.language}`}
+            >
                 {props.value}
             </code>
         </pre>
     );
 }
 
-export default function ArticlePage({ article, markdown }: ArticlePageProps) {
-    const description = `${article.description}\n(modified ${new Date(article.modified).toLocaleString()})`;
+export default function ArticlePage({ article }: ArticlePageProps) {
+    const description = `${article.description}\n(modified ${new Date(
+        article.modified
+    ).toLocaleString()})`;
     return (
         <>
             <NavBar />
             <CenterContainer>
-                {article && <BigTitle title={article.name} description={description} color={article.themeColor} />}
-                {markdown ? (
-                    <MarkdownContainer color={article.themeColor}>
-                        <ReactMarkdown source={markdown} renderers={{ code: CodeBlock }} />
-                    </MarkdownContainer>
-                ) : (
-                    <p>(Nothing here!)</p>
+                {article && (
+                    <BigTitle
+                        title={article.name}
+                        description={description}
+                        color={article.themeColor}
+                    />
                 )}
+                <MarkdownContainer color={article.themeColor}>
+                    <ReactMarkdown
+                        source={article.markdown}
+                        renderers={{ code: CodeBlock }}
+                    />
+                </MarkdownContainer>
             </CenterContainer>
         </>
     );
 }
 
 export const getStaticPaths: GetStaticPaths = async function () {
-    var paths = await (await readArticleNames()).map((name) => `/article/${name}`);
+    var paths = await (await getArticles()).map((e) => e.href);
     return {
         fallback: false,
         paths,
@@ -167,10 +181,7 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     }
 
     var article = await getArticleWithName(name);
-    var markdown = await getMarkdownForArticle(name);
-
     var props: ArticlePageProps = {
-        markdown,
         article,
     };
 
