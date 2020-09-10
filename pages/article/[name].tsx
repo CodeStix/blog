@@ -10,6 +10,7 @@ import styled from "styled-components";
 import hljs from "highlight.js";
 import Card from "../../components/Card";
 import Title from "../../components/Title";
+import Head from "next/head";
 
 type ArticlePageProps = {
     article: Article;
@@ -133,12 +134,13 @@ function CodeBlock(props: { value: string; language?: string }) {
 }
 
 const Header = styled.div`
+    position: relative;
     background: #fff1;
     margin-top: 2.2em;
     padding: 1.5em;
     border-radius: 0 1em 1em 1em;
     max-height: 40vh;
-    overflow: auto;
+    /* overflow: auto; */
 `;
 
 const HeaderDescription = styled.p`
@@ -150,14 +152,14 @@ const HeaderDetail = styled.p`
     font-style: italic;
 `;
 
-const HeaderType = styled.span`
+const HeaderTag = styled.span`
     text-transform: capitalize;
     background-color: #fff1;
     padding: 0.5em 1em;
     border-radius: 0.5em 0.5em 0 0;
     position: absolute;
     font-weight: bold;
-    top: 0;
+    top: -2.15em;
     left: 0;
 `;
 
@@ -167,6 +169,12 @@ export default function ArticlePage({ article }: ArticlePageProps) {
     ).toLocaleString()})`;
     return (
         <>
+            <Head>
+                <title>{article.name}</title>
+                <meta name="description" content={article.description} />
+                <meta name="keywords" content="Programming, Coding" />
+                <meta name="author" content="Stijn Rogiest" />
+            </Head>
             <NavBar />
             <CenterContainer>
                 <Header>
@@ -175,7 +183,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                         color={article.themeColor}
                         small={"by Stijn Rogiest"}
                     />
-                    <HeaderType>{article.type}</HeaderType>
+                    <HeaderTag>{article.type}</HeaderTag>
                     <HeaderDescription>{article.description}</HeaderDescription>
                     <HeaderDetail>
                         Last modified{" "}
