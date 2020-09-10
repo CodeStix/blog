@@ -163,6 +163,11 @@ const HeaderTag = styled.span`
     left: 0;
 `;
 
+const HeaderAuthor = styled.small`
+    opacity: 0.4;
+    font-size: 0.6em;
+`;
+
 export default function ArticlePage({ article }: ArticlePageProps) {
     const description = `${article.description}\n(modified ${new Date(
         article.modified
@@ -178,11 +183,10 @@ export default function ArticlePage({ article }: ArticlePageProps) {
             <NavBar />
             <CenterContainer>
                 <Header>
-                    <Title
-                        title={article.name}
-                        color={article.themeColor}
-                        small={"by Stijn Rogiest"}
-                    />
+                    <Title color={article.themeColor}>
+                        {article.name}{" "}
+                        <HeaderAuthor>{"by Stijn Rogiest"}</HeaderAuthor>
+                    </Title>
                     <HeaderTag>{article.type}</HeaderTag>
                     <HeaderDescription>{article.description}</HeaderDescription>
                     <HeaderDetail>

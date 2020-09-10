@@ -6,6 +6,7 @@ import CenterContainer from "../components/CenterContainer";
 import BigTitle from "../components/BigTitle";
 import ArticleCard from "../components/ArticleCard";
 import { getArticles } from "../server/articleLoader";
+import Title from "../components/Title";
 
 type ProjectsProps = {
     projects: Article[];
@@ -16,10 +17,7 @@ export default function Projects({ projects }: ProjectsProps) {
         <>
             <NavBar />
             <CenterContainer>
-                <BigTitle
-                    title="Projects"
-                    description="Below is a list of some of my most important projects, all of them are hosted on GitHub and the source code is public. Enjoy!"
-                />
+                <Title>Projects</Title>
                 {projects.map((project) => (
                     <ArticleCard key={project.name} article={project} />
                 ))}

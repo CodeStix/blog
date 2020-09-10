@@ -4,7 +4,7 @@ import Separator from "./Separator";
 import Title from "./Title";
 
 type BigTitleProps = {
-    title: string;
+    children: React.ReactNode;
     description?: string;
     color?: string;
 };
@@ -14,10 +14,14 @@ const Description = styled.p`
     opacity: 0.5;
 `;
 
-export default function BigTitle({ title, description, color }: BigTitleProps) {
+export default function BigTitle({
+    children,
+    description,
+    color,
+}: BigTitleProps) {
     return (
         <>
-            <Title color={color} title={title} />
+            <Title color={color}>{children}</Title>
             {description && <Description>{description}</Description>}
             <Separator color={color} />
         </>

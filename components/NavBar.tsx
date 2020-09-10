@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 import CenterContainer from "./CenterContainer";
 import styled from "styled-components";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+
+const navBarHeight = "4em";
 
 const Nav = styled.div`
-    height: 4em;
+    height: ${navBarHeight};
     display: flex;
 `;
 
@@ -12,8 +17,8 @@ const NavIcon = styled.div`
     background: url("/image/kutnocoffeedarktrans.png");
     background-repeat: no-repeat;
     background-size: contain;
-    height: 4em;
-    width: 4em;
+    height: ${navBarHeight};
+    width: ${navBarHeight};
     margin-right: 1.5em;
     flex-shrink: 0;
 `;
@@ -61,6 +66,22 @@ const NavItem = styled.a`
     }
 `;
 
+const NavSocialIcons = styled.div`
+    display: flex;
+    align-items: center;
+    margin-left: 3em;
+`;
+
+const NavSocialIcon = styled.a`
+    display: block;
+    padding: 0 0.4em;
+    font-size: 2em;
+
+    &:hover {
+        opacity: 0.5;
+    }
+`;
+
 export default function NavBar() {
     const [squashed, setSquashed] = useState(false);
     const [name, setName] = useState("Stijn Rogiest");
@@ -89,9 +110,13 @@ export default function NavBar() {
                     <NavIcon />
                 </Link>
                 <NavName className={squashed && "squashed"}>// {name}</NavName>
-                <Link href="https://github.com/CodeStix/blog" passHref>
-                    <NavItem>GitHub</NavItem>
-                </Link>
+                <NavSocialIcons>
+                    <Link href="https://github.com/CodeStix/blog" passHref>
+                        <NavSocialIcon>
+                            <FontAwesomeIcon icon={faGithub} />
+                        </NavSocialIcon>
+                    </Link>
+                </NavSocialIcons>
             </Nav>
         </CenterContainer>
     );

@@ -7,6 +7,8 @@ import { Article } from "../shared/Article";
 import { Carousel } from "react-responsive-carousel";
 import ReactPlayer from "react-player";
 import UrlCarousel from "./UrlCarousel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlasses, faPen } from "@fortawesome/free-solid-svg-icons";
 
 type ArticleCardProps = {
     article: Article;
@@ -41,6 +43,17 @@ const OverlayLink = styled.a`
     }
 `;
 
+const HeaderRow = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const HeaderModified = styled.small`
+    margin-left: 0.5em;
+    opacity: 0.4;
+    font-size: 0.8em;
+`;
+
 const CarouselContainer = styled.div`
     border-radius: 2em 2em 0 0;
     overflow: hidden;
@@ -55,14 +68,13 @@ export default function ArticleCard({ article }: ArticleCardProps) {
                 </OverlayLink>
             </Link>
             <Header>
-                <Title
-                    color={article.themeColor}
-                    title={article.name}
-                    small={
-                        article.readMinutes &&
-                        `${article.readMinutes} minute read.`
-                    }
-                />
+                <HeaderRow>
+                    <Title color={article.themeColor}>{article.name}</Title>
+                    <HeaderModified>
+                        <FontAwesomeIcon icon={faPen} />{" "}
+                        {new Date(article.modified).toLocaleString()}
+                    </HeaderModified>
+                </HeaderRow>
                 <p>{article.description}</p>
             </Header>
             {article.thumbnails && (

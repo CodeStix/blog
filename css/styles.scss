@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: inherit;
-    color: white;
 }
 
 body,
@@ -15,9 +14,16 @@ html {
 
 body {
     background-color: #1b1b1b;
+    color: white;
 }
 
 p,
 li {
     font-family: "Poppins", sans-serif;
+    color: white;
+}
+
+a,
+small {
+    color: white;
 }

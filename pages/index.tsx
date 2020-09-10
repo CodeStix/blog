@@ -19,12 +19,12 @@ export default function Index({ recentProjects, recentPosts }: IndexProps) {
         <>
             <NavBar />
             <CenterContainer>
-                <Title title="Recent posts" />
+                <Title>Recent posts</Title>
                 {recentPosts.map((post) => (
                     <ArticleCard key={post.name} article={post} />
                 ))}
 
-                <Title title="Recent projects" />
+                <Title>Recent projects</Title>
                 {recentProjects.map((project) => (
                     <ArticleCard key={project.name} article={project} />
                 ))}
