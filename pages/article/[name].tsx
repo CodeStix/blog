@@ -4,15 +4,12 @@ import CenterContainer from "../../components/CenterContainer";
 import NavBar from "../../components/NavBar";
 import { Article } from "../../shared/Article";
 import BigTitle from "../../components/BigTitle";
-import {
-    getArticleWithName,
-    getMarkdownForArticle,
-    readArticlePaths,
-    getArticles,
-} from "../../server/articleLoader";
+import { getArticleWithName, getArticles } from "../../server/articleLoader";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import hljs from "highlight.js";
+import Card from "../../components/Card";
+import Title from "../../components/Title";
 
 type ArticlePageProps = {
     article: Article;
@@ -135,6 +132,35 @@ function CodeBlock(props: { value: string; language?: string }) {
     );
 }
 
+const Header = styled.div`
+    background: #fff1;
+    margin-top: 2.2em;
+    padding: 1.5em;
+    border-radius: 0 1em 1em 1em;
+    max-height: 40vh;
+    overflow: auto;
+`;
+
+const HeaderDescription = styled.p`
+    margin: 1em 0;
+`;
+
+const HeaderDetail = styled.p`
+    opacity: 0.5;
+    font-style: italic;
+`;
+
+const HeaderType = styled.span`
+    text-transform: capitalize;
+    background-color: #fff1;
+    padding: 0.5em 1em;
+    border-radius: 0.5em 0.5em 0 0;
+    position: absolute;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+`;
+
 export default function ArticlePage({ article }: ArticlePageProps) {
     const description = `${article.description}\n(modified ${new Date(
         article.modified
@@ -143,13 +169,20 @@ export default function ArticlePage({ article }: ArticlePageProps) {
         <>
             <NavBar />
             <CenterContainer>
-                {article && (
-                    <BigTitle
+                <Header>
+                    <Title
                         title={article.name}
-                        description={description}
                         color={article.themeColor}
+                        small={"by Stijn Rogiest"}
                     />
-                )}
+                    <HeaderType>{article.type}</HeaderType>
+                    <HeaderDescription>{article.description}</HeaderDescription>
+                    <HeaderDetail>
+                        Last modified{" "}
+                        {new Date(article.modified).toLocaleString()}
+                    </HeaderDetail>
+                    <HeaderDetail>5 minute read.</HeaderDetail>
+                </Header>
                 <MarkdownContainer color={article.themeColor}>
                     <ReactMarkdown
                         source={article.markdown}

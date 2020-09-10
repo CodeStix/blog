@@ -11,11 +11,24 @@ const TitleHeader = styled.h2`
     }
 `;
 
+const TitleSmall = styled.small`
+    display: inline-block;
+    opacity: 0.4;
+    font-size: 0.6em;
+    padding-left: 0.5em;
+`;
+
 type TitleProps = {
     color?: string;
     title: string;
+    small?: string;
 };
 
-export default function Title({ title, color }: TitleProps) {
-    return <TitleHeader color={color}>{title}</TitleHeader>;
+export default function Title({ title, color, small }: TitleProps) {
+    return (
+        <TitleHeader color={color}>
+            {title}
+            {small && <TitleSmall>{small}</TitleSmall>}
+        </TitleHeader>
+    );
 }
