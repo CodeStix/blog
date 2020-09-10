@@ -15,6 +15,7 @@ const NavIcon = styled.div`
     height: 4em;
     width: 4em;
     margin-right: 1.5em;
+    flex-shrink: 0;
 `;
 
 const NavName = styled.span`
@@ -24,6 +25,7 @@ const NavName = styled.span`
     height: 100%;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     justify-content: center;
     font-size: 1.5em;
     flex-grow: 1; /* push other nav items to the right */
@@ -40,6 +42,22 @@ const NavName = styled.span`
     &.squashed {
         transform: scaleY(0);
         transition: transform 100ms;
+    }
+`;
+
+const NavItem = styled.a`
+    display: block;
+    display: flex;
+    align-items: center;
+    border-bottom: 4px solid white;
+    font-weight: bold;
+    padding: 0 0.5em;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        /* color: gray; */
+        background-color: #fff1;
     }
 `;
 
@@ -71,6 +89,9 @@ export default function NavBar() {
                     <NavIcon />
                 </Link>
                 <NavName className={squashed && "squashed"}>// {name}</NavName>
+                <Link href="https://github.com/CodeStix/blog" passHref>
+                    <NavItem>GitHub</NavItem>
+                </Link>
             </Nav>
         </CenterContainer>
     );
