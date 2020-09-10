@@ -85,6 +85,11 @@ function Thumbnail({ src, isSelected }: { src: string; isSelected?: boolean }) {
     }
 }
 
+const CarouselContainer = styled.div`
+    border-radius: 2em 2em 0 0;
+    overflow: hidden;
+`;
+
 export default function ArticleCard({ article }: ArticleCardProps) {
     const customRenderItem = (item, props) => (
         <item.type {...item.props} {...props} />
@@ -109,19 +114,21 @@ export default function ArticleCard({ article }: ArticleCardProps) {
                 <p>{article.description}</p>
             </Header>
             {article.thumbnails && (
-                <Carousel
-                    renderItem={customRenderItem}
-                    autoPlay={true}
-                    interval={5000}
-                    infiniteLoop={true}
-                    showThumbs={false}
-                    showArrows={false}
-                    showStatus={false}
-                >
-                    {article.thumbnails.map((src, i) => (
-                        <Thumbnail key={i} src={src} />
-                    ))}
-                </Carousel>
+                <CarouselContainer>
+                    <Carousel
+                        renderItem={customRenderItem}
+                        autoPlay={true}
+                        interval={5000}
+                        infiniteLoop={true}
+                        showThumbs={false}
+                        showArrows={false}
+                        showStatus={false}
+                    >
+                        {article.thumbnails.map((src, i) => (
+                            <Thumbnail key={i} src={src} />
+                        ))}
+                    </Carousel>
+                </CarouselContainer>
             )}
         </Card>
     );
