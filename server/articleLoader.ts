@@ -23,7 +23,7 @@ export async function getArticles(): Promise<Article[]> {
     for (let i = 0; i < files.length; i++) {
         var file = files[i];
         if (!file.endsWith(".md")) {
-            console.log("Unknown file", file);
+            console.log("Skipping file because no markdown:", file);
             continue;
         }
 
@@ -48,19 +48,4 @@ export async function getArticleWithName(name: string): Promise<Article> {
         markdown: meta.content,
         ...meta.data,
     } as Article;
-
-    /*try {
-        const filePath = path.join(articlesDir, name + ".json");
-        var stat = await statFileAsync(filePath);
-        var json = await readFileAsync(filePath, {
-            encoding: "utf8",
-        });
-        var article: Article = JSON.parse(json);
-        article.modified = stat.mtimeMs;
-        article.href = `/article/${name}`;
-        return article;
-    } catch (ex) {
-        console.error("Could not read article metadata: " + ex);
-        return null;
-    }*/
 }

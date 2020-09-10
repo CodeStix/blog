@@ -1,11 +1,11 @@
 ---
-description: Use this tool to convert a standard Beat Saber level into a 360 degree one!,
+description: I created a tool to convert a standard Beat Saber level into a 360 degree one! Here's how it works.
 name: Beat-360fyer
 themeColor: "#00A3FF"
 thumbnails:
     - https://www.youtube.com/watch?v=OZGkLv5ajLU&t=34s
 type: project
-readMinutes: 10
+readMinutes: 2
 ---
 
 <iframe width="100%" height="400px" src="https://www.youtube.com/embed/OZGkLv5ajLU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
