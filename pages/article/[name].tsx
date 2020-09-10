@@ -36,19 +36,19 @@ const MarkdownContainer = styled.div<{ color: string }>`
     }
 
     p {
-        margin: 1em 0;
+        margin: 1.2em 0;
     }
 
     ol li::before {
         content: counter(li) ".";
         color: ${(props) => props.color};
-        opacity: 0.6;
+        opacity: 0.8;
     }
 
     ul li::before {
         content: "-";
         color: ${(props) => props.color};
-        opacity: 0.6;
+        opacity: 0.8;
     }
 
     ol,
@@ -61,6 +61,7 @@ const MarkdownContainer = styled.div<{ color: string }>`
         li::before {
             display: inline-block;
             width: 1.2em;
+            font-weight: bold;
         }
     }
 
@@ -100,6 +101,7 @@ const MarkdownContainer = styled.div<{ color: string }>`
         padding: 1em;
         border: 1px solid #fff2;
         border-radius: 0.5em;
+        white-space: pre-wrap;
     }
 
     code {
@@ -110,6 +112,7 @@ const MarkdownContainer = styled.div<{ color: string }>`
     }
 
     img {
+        margin: 0.8em 0;
         max-width: 100%;
     }
 `;
@@ -136,7 +139,7 @@ function CodeBlock(props: { value: string; language?: string }) {
 const Header = styled.div`
     position: relative;
     background: #fff1;
-    margin-top: 2.2em;
+    margin: 2.2em 0;
     padding: 1.5em;
     border-radius: 0 1em 1em 1em;
     max-height: 40vh;
@@ -203,6 +206,8 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                     <ReactMarkdown
                         source={article.markdown}
                         renderers={{ code: CodeBlock }}
+                        skipHtml={false}
+                        escapeHtml={false}
                     />
                 </MarkdownContainer>
             </CenterContainer>
