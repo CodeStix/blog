@@ -181,7 +181,11 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                         Last modified{" "}
                         {new Date(article.modified).toLocaleString()}
                     </HeaderDetail>
-                    <HeaderDetail>5 minute read.</HeaderDetail>
+                    {article.readMinutes && (
+                        <HeaderDetail>
+                            {article.readMinutes} minute read.
+                        </HeaderDetail>
+                    )}
                 </Header>
                 <MarkdownContainer color={article.themeColor}>
                     <ReactMarkdown

@@ -3,6 +3,7 @@ export type Article = {
     name: string;
     description: string;
     type: "project" | "post";
+    readMinutes?: string;
     thumbnails?: string[];
     tease?: string;
     href: string;

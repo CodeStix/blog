@@ -5,6 +5,7 @@ themeColor: "#00A3FF"
 thumbnails:
     - https://www.youtube.com/watch?v=OZGkLv5ajLU&t=34s
 type: project
+readMinutes: 10
 ---
 
 # Beat-360fyer

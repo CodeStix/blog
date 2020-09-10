@@ -69,7 +69,15 @@ function Thumbnail({ src, isSelected }: { src: string; isSelected?: boolean }) {
     if (src.startsWith("https://www.youtube.com/") || src.endsWith(".mp4")) {
         return (
             <ThumbnailVideo>
-                <ReactPlayer width="100%" height="100%" controls={false} url={src} playing={isSelected} loop={true} muted={true} />
+                <ReactPlayer
+                    width="100%"
+                    height="100%"
+                    controls={false}
+                    url={src}
+                    playing={isSelected}
+                    loop={true}
+                    muted={true}
+                />
             </ThumbnailVideo>
         );
     } else {
@@ -78,15 +86,26 @@ function Thumbnail({ src, isSelected }: { src: string; isSelected?: boolean }) {
 }
 
 export default function ArticleCard({ article }: ArticleCardProps) {
-    const customRenderItem = (item, props) => <item.type {...item.props} {...props} />;
+    const customRenderItem = (item, props) => (
+        <item.type {...item.props} {...props} />
+    );
 
     return (
         <Card color={article.themeColor}>
             <Link href="/article/[name]" as={article.href} passHref>
-                <OverlayLink>{article.tease ?? "Click here to read more!"}</OverlayLink>
+                <OverlayLink>
+                    {article.tease ?? "Click here to read more!"}
+                </OverlayLink>
             </Link>
             <Header>
-                <Title color={article.themeColor} title={article.name} />
+                <Title
+                    color={article.themeColor}
+                    title={article.name}
+                    small={
+                        article.readMinutes &&
+                        `${article.readMinutes} minute read.`
+                    }
+                />
                 <p>{article.description}</p>
             </Header>
             {article.thumbnails && (
