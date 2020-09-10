@@ -16,6 +16,12 @@ type UrlCarouselProps = {
 
 const ResourceContainer = styled.div`
     position: relative;
+
+    /* fix video width on mobile*/
+    iframe {
+        width: 100% !important;
+        margin: 0 !important;
+    }
 `;
 
 const ResourceImage = styled.div<{ src: string; height: string }>`
