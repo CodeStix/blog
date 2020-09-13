@@ -48,7 +48,7 @@ export default function UrlCarousel(props: UrlCarouselProps) {
             showStatus={false}
         >
             {props.urls.map((src, i) => (
-                <ResourceContainer>
+                <ResourceContainer key={i}>
                     {src.startsWith("https://www.youtube.com/") ? (
                         <ReactPlayer
                             width="100%"
