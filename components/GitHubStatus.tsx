@@ -92,6 +92,8 @@ export default function GitHubStatus({ repo, color }: GitHubStatusProps) {
                 watchers: repoStats.data.watchers_count,
             });
 
+            if (repoStats.data.stargazers_count <= 0) return;
+
             var repoStargazers = await octo.activity.listStargazersForRepo({
                 owner: split[0],
                 repo: split[1],
@@ -120,7 +122,7 @@ export default function GitHubStatus({ repo, color }: GitHubStatusProps) {
                 <ContainerOverlay>Star me!</ContainerOverlay>
             </Link>
             <GitHubBadge color={color ?? "lime"}>
-                <FontAwesomeIcon icon={faGithub} /> GitHub
+                <FontAwesomeIcon icon={faGithub} /> {repo}
             </GitHubBadge>
             {stats ? (
                 <>
@@ -130,12 +132,12 @@ export default function GitHubStatus({ repo, color }: GitHubStatusProps) {
                             <Important>{stats.forks} forks</Important>
                         </GitHubStat>
                     )}
-                    {!!stats.starsgazers && (
-                        <GitHubStat>
-                            <FontAwesomeIcon icon={faStar} />{" "}
-                            <Important>{stats.starsgazers} stars</Important>
-                        </GitHubStat>
-                    )}
+
+                    <GitHubStat>
+                        <FontAwesomeIcon icon={faStar} />{" "}
+                        <Important>{stats.starsgazers} stars</Important>
+                    </GitHubStat>
+
                     {lastStargazer && (
                         <>
                             <GitHubStat>Last stargazer</GitHubStat>
