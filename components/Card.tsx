@@ -4,6 +4,7 @@ import styled from "styled-components";
 const CardDiv = styled.article`
     position: relative;
     border-radius: 1em;
+    z-index: 1;
     /* width: 100%; */
     border: 0.33em solid ${(props) => props.color ?? "#fff1"};
     margin: 2em 0;

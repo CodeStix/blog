@@ -27,7 +27,7 @@ const ResourceContainer = styled.div`
 const ResourceImage = styled.div<{ src: string; height: string }>`
     width: 100%;
     height: ${(props) => props.height};
-    border-radius: 1em 1em 0 0;
+    /* border-radius: 1em 1em 0 0; */
     background: url("${(props) => props.src}");
     background-repeat: no-repeat;
     background-size: cover;

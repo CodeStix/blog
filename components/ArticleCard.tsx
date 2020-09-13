@@ -21,7 +21,7 @@ const OverlayLink = styled.a`
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     background-color: #000b;
     justify-content: center;
@@ -44,6 +44,7 @@ const OverlayLink = styled.a`
 
 const CarouselContainer = styled.div`
     border-radius: 2em 2em 0 0;
+    z-index: 10;
     overflow: hidden;
 `;
 

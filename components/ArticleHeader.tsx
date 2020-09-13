@@ -21,6 +21,10 @@ const HeaderTitle = styled.div<{ color: string }>`
     margin-bottom: 0.35rem;
     color: ${(props) => props.color ?? "white"};
     font-weight: bold;
+
+    @media only screen and (max-width: 600px) {
+        font-size: 1.4rem;
+    }
 `;
 
 const HeaderDetails = styled.div`
