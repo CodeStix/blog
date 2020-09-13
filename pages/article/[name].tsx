@@ -143,6 +143,7 @@ const ArticleHeaderCard = styled.div`
     position: relative;
     background: #fff1;
     padding: 0.5em;
+    margin-top: 1em;
     border-radius: 1em;
     /* max-height: 40vh; */
     /* overflow: auto; */

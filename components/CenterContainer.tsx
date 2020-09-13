@@ -5,7 +5,7 @@ const OuterContainer = styled.section`
     display: flex;
     width: 100%;
     justify-content: center;
-    margin-bottom: 2em;
+    /* margin-bottom: 2em; */
     padding: 0 10px;
 `;
 
