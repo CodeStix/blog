@@ -31,6 +31,7 @@ const GitHubBadge = styled.span<{ color: string }>`
 const GitHubStat = styled.span`
     padding: 0.5em 0.8em;
     background-color: #fff1;
+    flex-grow: 1;
     /* font-weight: bold; */
 `;
 
@@ -46,6 +47,7 @@ const Container = styled.div`
     position: relative;
     border-radius: 1em;
     display: inline-flex;
+    flex-wrap: wrap;
     border: 1px solid #fff1;
     overflow: hidden;
 `;
