@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const CardDiv = styled.div`
+const CardDiv = styled.article`
     position: relative;
     border-radius: 1em;
     /* width: 100%; */

@@ -8,7 +8,7 @@ import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const navBarHeight = "4em";
 
-const Nav = styled.div`
+const Nav = styled.nav`
     height: ${navBarHeight};
     display: flex;
 `;
