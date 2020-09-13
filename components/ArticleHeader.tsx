@@ -11,13 +11,20 @@ const Header = styled.div`
 
 const HeaderRow = styled.div`
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     justify-content: flex-start;
 `;
 
-const HeaderItem = styled.div<{ grow?: boolean }>`
-    ${(props) => props.grow && "flex-grow: 1;"}
-    margin-right: 1.3em;
+const HeaderTitle = styled.div<{ color: string }>`
+    flex-grow: 1;
+    font-size: 1.7em;
+    margin-bottom: 0.35rem;
+    color: ${(props) => props.color ?? "white"};
+    font-weight: bold;
+`;
+
+const HeaderDetails = styled.div`
+    margin-bottom: 0.35rem;
 `;
 
 const HeaderType = styled.span`
@@ -29,7 +36,8 @@ const HeaderType = styled.span`
 const HeaderDetail = styled.small`
     /* font-size: 0.7em; */
     display: inline-block;
-    margin: 0.5em;
+    margin: 0.3em 0;
+    margin-right: 1.3em;
 `;
 
 type ArticleHeaderProps = {
@@ -40,31 +48,25 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
     return (
         <Header>
             <HeaderRow>
-                <HeaderItem grow={true}>
-                    <Title color={article.themeColor}>
-                        <HeaderType>{article.type}: </HeaderType>
-                        {article.name}
-                    </Title>
-                </HeaderItem>
-                <HeaderItem>
+                <HeaderTitle color={article.themeColor}>
+                    <HeaderType>{article.type}: </HeaderType>
+                    {article.name}
+                </HeaderTitle>
+                <HeaderDetails>
                     <HeaderDetail>
                         <FontAwesomeIcon icon={faPen} /> Updated{" "}
                         {new Date(article.modified).toDateString()}
                     </HeaderDetail>
-                </HeaderItem>
-                {article.readMinutes && (
-                    <HeaderItem>
+                    {article.readMinutes && (
                         <HeaderDetail>
                             <FontAwesomeIcon icon={faGlasses} />{" "}
                             {article.readMinutes} minute read
                         </HeaderDetail>
-                    </HeaderItem>
-                )}
-                <HeaderItem>
+                    )}
                     <HeaderDetail>
                         <FontAwesomeIcon icon={faUser} /> {"Stijn Rogiest"}
                     </HeaderDetail>
-                </HeaderItem>
+                </HeaderDetails>
             </HeaderRow>
             <p>{article.description}</p>
         </Header>
