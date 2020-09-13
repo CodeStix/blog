@@ -5,8 +5,9 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import CoffeeIcon from "./CoffeeIcon";
 
-const navBarHeight = "4em";
+const navBarHeight = "3.5em";
 
 const Nav = styled.nav`
     height: ${navBarHeight};
@@ -14,9 +15,9 @@ const Nav = styled.nav`
 `;
 
 const NavIcon = styled.div`
-    background: url("/image/kutnocoffeedarktrans.png");
-    background-repeat: no-repeat;
-    background-size: contain;
+    /* background: url("/image/kutnocoffeedarktrans.png"); */
+    /* background-repeat: no-repeat; */
+    /* background-size: contain; */
     height: ${navBarHeight};
     width: ${navBarHeight};
     margin-right: 1.5em;
@@ -107,7 +108,9 @@ export default function NavBar() {
         <CenterContainer style={{ backgroundColor: "#fff1" }}>
             <Nav>
                 <Link href="/">
-                    <NavIcon />
+                    <NavIcon>
+                        <CoffeeIcon style={{}} />
+                    </NavIcon>
                 </Link>
                 <NavName className={squashed && "squashed"}>// {name}</NavName>
                 <NavSocialIcons>
