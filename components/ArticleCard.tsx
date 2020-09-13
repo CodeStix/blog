@@ -23,13 +23,13 @@ const OverlayLink = styled.a`
     height: 100%;
     z-index: 1;
     display: flex;
-    background-color: #0009;
+    background-color: #000b;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     opacity: 0;
     transition: opacity 200ms;
-    font-size: 1.4em;
+    font-size: 1.6em;
     text-align: center;
     font-weight: bold;
     text-decoration: none;
