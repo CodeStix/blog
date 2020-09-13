@@ -14,7 +14,7 @@ const CoffeeSvg = styled.svg`
 
     @keyframes shift {
         0% {
-            transform: translateY(100%);
+            transform: translateY(120%);
             opacity: 1;
         }
 
