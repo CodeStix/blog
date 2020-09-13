@@ -73,7 +73,7 @@ export default function CoffeeIcon({ style, icon }: CoffeeIconProps) {
                     <g
                         transform="translate(15, 0.000000)"
                         stroke="#BEBEBE"
-                        stroke-width="10"
+                        strokeWidth="10"
                     >
                         <g className="smoke-1">
                             <path
@@ -85,7 +85,7 @@ export default function CoffeeIcon({ style, icon }: CoffeeIconProps) {
                     <g
                         transform="translate(24.000000, 0.000000)"
                         stroke="#BEBEBE"
-                        stroke-width="10"
+                        strokeWidth="10"
                     >
                         <g className="smoke-2">
                             <path
@@ -97,7 +97,7 @@ export default function CoffeeIcon({ style, icon }: CoffeeIconProps) {
                     <g
                         transform="translate(6.000000, 0.000000)"
                         stroke="#BEBEBE"
-                        stroke-width="10"
+                        strokeWidth="10"
                     >
                         <g className="smoke-3">
                             <path
