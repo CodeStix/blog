@@ -66,9 +66,11 @@ const ContainerOverlay = styled.a`
     opacity: 0;
     transition: opacity 200ms;
 
-    &:hover {
-        opacity: 1;
-        transition: opacity 200ms;
+    @media only screen and (min-width: 600px) {
+        &:hover {
+            opacity: 1;
+            transition: opacity 200ms;
+        }
     }
 `;
 

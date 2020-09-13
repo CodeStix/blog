@@ -34,9 +34,11 @@ const OverlayLink = styled.a`
     font-weight: bold;
     text-decoration: none;
 
-    &:hover {
-        opacity: 1;
-        transition: opacity 200ms;
+    @media only screen and (min-width: 600px) {
+        &:hover {
+            opacity: 1;
+            transition: opacity 200ms;
+        }
     }
 `;
 
