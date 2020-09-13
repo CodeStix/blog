@@ -11,6 +11,7 @@ import hljs from "highlight.js";
 import Card from "../../components/Card";
 import Title from "../../components/Title";
 import Head from "next/head";
+import ArticleHeader from "../../components/ArticleHeader";
 
 type ArticlePageProps = {
     article: Article;
@@ -136,39 +137,18 @@ function CodeBlock(props: { value: string; language?: string }) {
     );
 }
 
-const Header = styled.div`
+const ArticleHeaderCard = styled.div`
     position: relative;
     background: #fff1;
-    margin: 2.2em 0;
-    padding: 1.5em;
-    border-radius: 0 1em 1em 1em;
-    max-height: 40vh;
+    margin-bottom: 3em;
+    padding: 0.5em;
+    border-radius: 1em;
+    /* max-height: 40vh; */
     /* overflow: auto; */
-`;
 
-const HeaderDescription = styled.p`
-    margin: 1em 0;
-`;
-
-const HeaderDetail = styled.p`
-    opacity: 0.5;
-    font-style: italic;
-`;
-
-const HeaderTag = styled.span`
-    text-transform: capitalize;
-    background-color: #fff1;
-    padding: 0.5em 1em;
-    border-radius: 0.5em 0.5em 0 0;
-    position: absolute;
-    font-weight: bold;
-    top: -2.15em;
-    left: 0;
-`;
-
-const HeaderAuthor = styled.small`
-    opacity: 0.4;
-    font-size: 0.6em;
+    @media only screen and (max-width: 600px) {
+        border-radius: 0;
+    }
 `;
 
 export default function ArticlePage({ article }: ArticlePageProps) {
@@ -185,7 +165,10 @@ export default function ArticlePage({ article }: ArticlePageProps) {
             </Head>
             <NavBar />
             <CenterContainer>
-                <Header>
+                <ArticleHeaderCard>
+                    <ArticleHeader article={article} />
+                </ArticleHeaderCard>
+                {/* <Header>
                     <Title color={article.themeColor}>
                         {article.name}{" "}
                         <HeaderAuthor>{"by Stijn Rogiest"}</HeaderAuthor>
@@ -193,15 +176,14 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                     <HeaderTag>{article.type}</HeaderTag>
                     <HeaderDescription>{article.description}</HeaderDescription>
                     <HeaderDetail>
-                        Last modified{" "}
-                        {new Date(article.modified).toLocaleString()}
+                        Updated {new Date(article.modified).toDateString()}
                     </HeaderDetail>
                     {article.readMinutes && (
                         <HeaderDetail>
                             {article.readMinutes} minute read.
                         </HeaderDetail>
                     )}
-                </Header>
+                </Header> */}
                 <MarkdownContainer color={article.themeColor}>
                     <ReactMarkdown
                         source={article.markdown}
