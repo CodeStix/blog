@@ -6,6 +6,7 @@ export type Article = {
     readMinutes?: string;
     thumbnails?: string[];
     tease?: string;
+    githubRepo?: string;
     href: string;
     markdown: string;
     modified: number;

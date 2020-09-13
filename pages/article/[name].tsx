@@ -12,13 +12,15 @@ import Card from "../../components/Card";
 import Title from "../../components/Title";
 import Head from "next/head";
 import ArticleHeader from "../../components/ArticleHeader";
+import { Octokit } from "@octokit/rest";
+import GitHubStatus from "../../components/GitHubStatus";
 
 type ArticlePageProps = {
     article: Article;
 };
 
 const MarkdownContainer = styled.div<{ color: string }>`
-    margin-bottom: 10em;
+    margin: 3em 0 10em 0;
 
     h1,
     h2,
@@ -140,7 +142,6 @@ function CodeBlock(props: { value: string; language?: string }) {
 const ArticleHeaderCard = styled.div`
     position: relative;
     background: #fff1;
-    margin-bottom: 3em;
     padding: 0.5em;
     border-radius: 1em;
     /* max-height: 40vh; */
@@ -152,10 +153,11 @@ const ArticleHeaderCard = styled.div`
     }
 `;
 
+const ArticleGitHubCard = styled.div`
+    margin: 1.5em 0;
+`;
+
 export default function ArticlePage({ article }: ArticlePageProps) {
-    const description = `${article.description}\n(modified ${new Date(
-        article.modified
-    ).toLocaleString()})`;
     return (
         <>
             <Head>
@@ -169,6 +171,11 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                 <ArticleHeaderCard>
                     <ArticleHeader article={article} />
                 </ArticleHeaderCard>
+                {article.githubRepo && (
+                    <ArticleGitHubCard>
+                        <GitHubStatus repo={article.githubRepo} />
+                    </ArticleGitHubCard>
+                )}
                 <MarkdownContainer color={article.themeColor}>
                     <ReactMarkdown
                         source={article.markdown}
