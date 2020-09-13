@@ -118,6 +118,34 @@ const MarkdownContainer = styled.div<{ color: string }>`
         margin: 0.8em 0;
         max-width: 100%;
     }
+
+    table {
+        position: relative;
+        border-collapse: collapse;
+
+        max-width: 100%;
+
+        tr {
+            td,
+            th {
+                padding: 0.4em;
+            }
+        }
+
+        thead {
+            color: ${(props) => props.color};
+            tr td,
+            tr th {
+                background: #fff1;
+            }
+        }
+        tbody {
+            tr td,
+            tr th {
+                border: 1px solid #fff1;
+            }
+        }
+    }
 `;
 
 function CodeBlock(props: { value: string; language?: string }) {
