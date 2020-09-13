@@ -5,10 +5,18 @@ const CardDiv = styled.div`
     position: relative;
     border-radius: 1em;
     /* width: 100%; */
-    border: 0.4em solid ${(props) => props.color ?? "#fff1"};
+    border: 0.33em solid ${(props) => props.color ?? "#fff1"};
     margin: 2em 0;
     /* flex-basis: 50%; */
     overflow: hidden;
+
+    @media only screen and (max-width: 600px) {
+        /* border-radius: 0; */
+        border-left: none;
+        border-right: none;
+        background: #fff1;
+        /* margin: 0; */
+    }
 `;
 
 type CardProps = {

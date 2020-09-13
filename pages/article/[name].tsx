@@ -147,7 +147,8 @@ const ArticleHeaderCard = styled.div`
     /* overflow: auto; */
 
     @media only screen and (max-width: 600px) {
-        border-radius: 0;
+        border-radius: 0.5em;
+        padding: 0em;
     }
 `;
 
@@ -168,22 +169,6 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                 <ArticleHeaderCard>
                     <ArticleHeader article={article} />
                 </ArticleHeaderCard>
-                {/* <Header>
-                    <Title color={article.themeColor}>
-                        {article.name}{" "}
-                        <HeaderAuthor>{"by Stijn Rogiest"}</HeaderAuthor>
-                    </Title>
-                    <HeaderTag>{article.type}</HeaderTag>
-                    <HeaderDescription>{article.description}</HeaderDescription>
-                    <HeaderDetail>
-                        Updated {new Date(article.modified).toDateString()}
-                    </HeaderDetail>
-                    {article.readMinutes && (
-                        <HeaderDetail>
-                            {article.readMinutes} minute read.
-                        </HeaderDetail>
-                    )}
-                </Header> */}
                 <MarkdownContainer color={article.themeColor}>
                     <ReactMarkdown
                         source={article.markdown}
