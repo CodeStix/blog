@@ -25,7 +25,6 @@ const NavIcon = styled.div`
 `;
 
 const NavName = styled.span`
-    color: white;
     font-weight: bold;
     display: block;
     height: 100%;
@@ -38,16 +37,16 @@ const NavName = styled.span`
     transition: 200ms;
     transition: transform 100ms, letter-spacing 200ms;
     transform: scaleY(1);
+    letter-spacing: 0px;
+    cursor: pointer;
 
     &:hover {
-        color: cyan;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         transition: 200ms;
     }
 
-    &.squashed {
-        transform: scaleY(0);
-        transition: transform 100ms;
+    &:active {
+        letter-spacing: 5px;
     }
 `;
 
@@ -84,35 +83,15 @@ const NavSocialIcon = styled.a`
 `;
 
 export default function NavBar() {
-    const [squashed, setSquashed] = useState(false);
-    const [name, setName] = useState("Stijn Rogiest");
-
-    function changeName() {
-        setSquashed(true);
-
-        setTimeout(() => {
-            setName((name) => {
-                setSquashed(false);
-                if (name === "Stijn Rogiest") return "codestix";
-                else return "Stijn Rogiest";
-            });
-        }, 500);
-    }
-
-    useEffect(() => {
-        var handle = setInterval(changeName, 5000);
-        return () => clearInterval(handle);
-    }, []);
-
     return (
         <CenterContainer style={{ backgroundColor: "#fff1" }}>
             <Nav>
+                <NavIcon>
+                    <CoffeeIcon style={{}} />
+                </NavIcon>
                 <Link href="/">
-                    <NavIcon>
-                        <CoffeeIcon style={{}} />
-                    </NavIcon>
+                    <NavName>codestix</NavName>
                 </Link>
-                <NavName className={squashed && "squashed"}>// {name}</NavName>
                 <NavSocialIcons>
                     <Link href="https://github.com/CodeStix/blog" passHref>
                         <NavSocialIcon>
