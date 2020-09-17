@@ -37,12 +37,16 @@ export default function GitHubDownloadButton({
             let owner = split[0],
                 repo = split[1];
             let octo = new Octokit();
-            let release = await octo.repos.getLatestRelease({ repo, owner });
-            setLatestRelease({
-                name: release.data.name,
-                url: release.data.html_url,
-                tag: release.data.tag_name,
-            });
+            try {
+                let release = await octo.repos.getLatestRelease({ repo, owner });
+                setLatestRelease({
+                    name: release.data.name,
+                    url: release.data.html_url,
+                    tag: release.data.tag_name,
+                });
+            } catch (ex) {
+                console.warn("Could not get latest release for", repository);
+            }
         })();
     }, []);
 
