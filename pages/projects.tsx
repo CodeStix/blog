@@ -7,6 +7,7 @@ import BigTitle from "../components/BigTitle";
 import ArticleCard from "../components/ArticleCard";
 import { getArticles } from "../server/articleLoader";
 import Title from "../components/Title";
+import ScrollNavBar from "../components/ScrollNavBar";
 
 type ProjectsProps = {
     projects: Article[];
@@ -16,6 +17,7 @@ export default function Projects({ projects }: ProjectsProps) {
     return (
         <>
             <NavBar />
+            <ScrollNavBar />
             <CenterContainer>
                 <Title>Projects</Title>
                 {projects.map((project) => (

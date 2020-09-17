@@ -8,6 +8,7 @@ import Card from "../components/Card";
 import ArticleCard from "../components/ArticleCard";
 import { getArticles } from "../server/articleLoader";
 import { Article } from "../shared/Article";
+import ScrollNavBar from "../components/ScrollNavBar";
 
 type IndexProps = {
     recentProjects: Article[];
@@ -15,14 +16,11 @@ type IndexProps = {
     recent: Article[];
 };
 
-export default function Index({
-    recentProjects,
-    recentPosts,
-    recent,
-}: IndexProps) {
+export default function Index({ recentProjects, recentPosts, recent }: IndexProps) {
     return (
         <>
             <NavBar />
+            <ScrollNavBar />
             <CenterContainer>
                 {recent.map((post) => (
                     <ArticleCard key={post.name} article={post} />
@@ -48,9 +46,7 @@ export const getStaticProps: GetStaticProps = async function () {
     articles = articles.sort((a, b) => b.modified - a.modified);
     var props: IndexProps = {
         recent: articles.splice(0, 2),
-        recentProjects: articles
-            .filter((e) => e.type === "project")
-            .splice(0, 2),
+        recentProjects: articles.filter((e) => e.type === "project").splice(0, 2),
         recentPosts: articles.filter((e) => e.type === "post").splice(0, 2),
     };
 
