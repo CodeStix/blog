@@ -29,11 +29,15 @@ const GitHubBadge = styled.span<{ color: string }>`
     padding: 0.5em 0.8em;
 `;
 
+const GitHubStatGroup = styled.div`
+    display: flex;
+    flex-grow: 1;
+`;
+
 const GitHubStat = styled.span`
     padding: 0.5em 0.8em;
     background-color: #fff1;
     flex-grow: 1;
-    /* font-weight: bold; */
 `;
 
 const Important = styled.span`
@@ -146,13 +150,13 @@ export default function GitHubStatus({ repo: repository, color }: GitHubStatusPr
                     </GitHubStat>
 
                     {lastStargazer && (
-                        <>
+                        <GitHubStatGroup>
                             <GitHubStat>Last stargazer</GitHubStat>
                             <GitHubStatImage src={lastStargazer.avatarUrl} />
                             <GitHubStat>
                                 <Important>{lastStargazer.name}</Important>
                             </GitHubStat>
-                        </>
+                        </GitHubStatGroup>
                     )}
                 </>
             ) : (
