@@ -3,15 +3,23 @@ import CenterContainer from "./CenterContainer";
 import styled from "styled-components";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faBars, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { faDiscord, faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import CoffeeIcon from "./CoffeeIcon";
 
 const navBarHeight = "3.5em";
 
 const Nav = styled.nav`
-    height: ${navBarHeight};
+    max-height: 3.5em;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    transition: max-height 100ms;
+
+    &.navOpen {
+        max-height: 100vh;
+        transition: max-height 800ms;
+    }
 `;
 
 const NavIcon = styled.div`
@@ -27,7 +35,7 @@ const NavIcon = styled.div`
 const NavName = styled.span`
     font-weight: bold;
     display: block;
-    height: 100%;
+    /* height: 100%; */
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -51,12 +59,11 @@ const NavName = styled.span`
 `;
 
 const NavItem = styled.a`
-    display: block;
     display: flex;
     align-items: center;
     border-bottom: 4px solid white;
     font-weight: bold;
-    padding: 0 0.5em;
+    padding: 1em 1em;
     cursor: pointer;
     text-decoration: none;
 
@@ -64,41 +71,107 @@ const NavItem = styled.a`
         /* color: gray; */
         background-color: #fff1;
     }
+
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+        font-size: 1em;
+        border: none;
+        background: #fff1;
+        border-radius: 1em;
+        margin-top: 0.5em;
+        font-size: 1.2em;
+    }
 `;
 
 const NavSocialIcons = styled.div`
     display: flex;
     align-items: center;
-    margin-left: 3em;
+    font-size: 1.5em;
+    margin: 0.5em 0 0.5em 2em;
+
+    @media only screen and (max-width: 600px) {
+        margin: 0.5em 0;
+        font-size: 2em;
+    }
 `;
 
 const NavSocialIcon = styled.a`
     display: block;
-    padding: 0 0.4em;
-    font-size: 2em;
+    padding: 0 0.2em;
 
     &:hover {
         opacity: 0.5;
     }
 `;
 
+const NavMain = styled.div`
+    display: flex;
+    flex-grow: 1;
+`;
+
+const NavSide = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+    }
+`;
+
+const MenuButton = styled.div`
+    position: absolute;
+    top: 0.23em;
+    right: 0.2em;
+    font-size: 2.2em;
+
+    @media only screen and (min-width: 600px) {
+        display: none;
+    }
+`;
+
 export default function NavBar() {
+    // const mobile = window.innerWidth < 600;
+    const [openMenu, setOpenMenu] = useState(false);
+
     return (
         <CenterContainer style={{ backgroundColor: "#2c2c2c" }}>
-            <Nav>
-                <NavIcon>
-                    <CoffeeIcon style={{}} />
-                </NavIcon>
-                <Link href="/">
-                    <NavName>codestix</NavName>
-                </Link>
-                <NavSocialIcons>
-                    <Link href="https://github.com/CodeStix/blog" passHref>
-                        <NavSocialIcon>
-                            <FontAwesomeIcon icon={faGithub} />
-                        </NavSocialIcon>
+            <Nav className={openMenu && "navOpen"}>
+                <NavMain>
+                    <NavIcon>
+                        <CoffeeIcon style={{}} />
+                    </NavIcon>
+                    <Link href="/">
+                        <NavName>codestix</NavName>
                     </Link>
-                </NavSocialIcons>
+                </NavMain>
+                <NavSide>
+                    <Link href="/projects" as="/projects" passHref>
+                        <NavItem>Projects</NavItem>
+                    </Link>
+                    <Link href="/test" as="/test" passHref>
+                        <NavItem>Test</NavItem>
+                    </Link>
+                    <NavSocialIcons>
+                        <Link href="https://github.com/CodeStix/blog" passHref>
+                            <NavSocialIcon>
+                                <FontAwesomeIcon icon={faGithub} />
+                            </NavSocialIcon>
+                        </Link>
+                        <Link href="https://twitter.com/codest1x" passHref>
+                            <NavSocialIcon>
+                                <FontAwesomeIcon icon={faTwitter} />
+                            </NavSocialIcon>
+                        </Link>
+                        <Link href="https://discord.gg/gnDwyU" passHref>
+                            <NavSocialIcon>
+                                <FontAwesomeIcon icon={faDiscord} />
+                            </NavSocialIcon>
+                        </Link>
+                    </NavSocialIcons>
+                </NavSide>
+                <MenuButton onClick={() => setOpenMenu(!openMenu)}>
+                    <FontAwesomeIcon icon={faBars} />
+                </MenuButton>
             </Nav>
         </CenterContainer>
     );
