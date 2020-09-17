@@ -148,9 +148,9 @@ export default function NavBar() {
                     <Link href="/projects" as="/projects" passHref>
                         <NavItem>Projects</NavItem>
                     </Link>
-                    <Link href="/test" as="/test" passHref>
+                    {/* <Link href="/test" as="/test" passHref>
                         <NavItem>Test</NavItem>
-                    </Link>
+                    </Link> */}
                     <NavSocialIcons>
                         <Link href="https://github.com/CodeStix/blog" passHref>
                             <NavSocialIcon>
