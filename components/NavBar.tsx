@@ -84,7 +84,7 @@ const NavSocialIcon = styled.a`
 
 export default function NavBar() {
     return (
-        <CenterContainer style={{ backgroundColor: "#fff1" }}>
+        <CenterContainer style={{ backgroundColor: "#2c2c2c" }}>
             <Nav>
                 <NavIcon>
                     <CoffeeIcon style={{}} />
