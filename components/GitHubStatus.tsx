@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCodeBranch, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import Button from "./Button";
 
 type GitHubStatusProps = {
@@ -22,12 +21,6 @@ type GitHubStats = {
 type GitHubStargazer = {
     name: string;
     avatarUrl: string;
-};
-
-type GitHubRelease = {
-    tag: string;
-    url: string;
-    name: string;
 };
 
 const GitHubBadge = styled.span<{ color: string }>`
@@ -84,23 +77,9 @@ const ContainerOverlay = styled.a`
     }
 `;
 
-const OuterContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-`;
-
-const DownloadName = styled.span`
-    font-weight: bold;
-    font-size: 1.1em;
-`;
-
 export default function GitHubStatus({ repo: repository, color }: GitHubStatusProps) {
     const [stats, setStats] = useState<GitHubStats>(null);
     const [lastStargazer, setLastStargazer] = useState<GitHubStargazer>(null);
-    const [latestRelease, setLatestRelease] = useState<GitHubRelease>(null);
-    const router = useRouter();
 
     useEffect(() => {
         (async () => {
@@ -119,13 +98,6 @@ export default function GitHubStatus({ repo: repository, color }: GitHubStatusPr
                 watchers: repoStats.data.watchers_count,
             });
             console.log({ repoStats });
-
-            let release = await octo.repos.getLatestRelease({ repo, owner });
-            setLatestRelease({
-                name: release.data.name,
-                url: release.data.html_url,
-                tag: release.data.tag_name,
-            });
 
             if (repoStats.data.stargazers_count <= 0) return;
 
@@ -152,52 +124,40 @@ export default function GitHubStatus({ repo: repository, color }: GitHubStatusPr
     }, []);
 
     return (
-        <OuterContainer>
-            <InnerContainer>
-                <Link href={`https://github.com/${repository}`} passHref>
-                    <ContainerOverlay>Star me!</ContainerOverlay>
-                </Link>
-                <GitHubBadge color={color ?? "lime"}>
-                    <FontAwesomeIcon icon={faGithub} /> {repository}
-                </GitHubBadge>
-                {stats ? (
-                    <>
-                        {!!stats.forks && (
-                            <GitHubStat>
-                                <FontAwesomeIcon icon={faCodeBranch} />{" "}
-                                <Important>{stats.forks} forks</Important>
-                            </GitHubStat>
-                        )}
-
+        <InnerContainer>
+            <Link href={`https://github.com/${repository}`} passHref>
+                <ContainerOverlay>Star me!</ContainerOverlay>
+            </Link>
+            <GitHubBadge color={color ?? "lime"}>
+                <FontAwesomeIcon icon={faGithub} /> {repository}
+            </GitHubBadge>
+            {stats ? (
+                <>
+                    {!!stats.forks && (
                         <GitHubStat>
-                            <FontAwesomeIcon icon={faStar} />{" "}
-                            <Important>{stats.starsgazers} stars</Important>
+                            <FontAwesomeIcon icon={faCodeBranch} />{" "}
+                            <Important>{stats.forks} forks</Important>
                         </GitHubStat>
+                    )}
 
-                        {lastStargazer && (
-                            <>
-                                <GitHubStat>Last stargazer</GitHubStat>
-                                <GitHubStatImage src={lastStargazer.avatarUrl} />
-                                <GitHubStat>
-                                    <Important>{lastStargazer.name}</Important>
-                                </GitHubStat>
-                            </>
-                        )}
-                    </>
-                ) : (
-                    <GitHubStat>Loading...</GitHubStat>
-                )}
-            </InnerContainer>
-            {latestRelease && (
-                <Button
-                    style={{}}
-                    onClick={() => router.push(latestRelease.url)}
-                    color={color ?? "lime"}
-                >
-                    <FontAwesomeIcon icon={faDownload} />{" "}
-                    <DownloadName>{latestRelease.name}</DownloadName>
-                </Button>
+                    <GitHubStat>
+                        <FontAwesomeIcon icon={faStar} />{" "}
+                        <Important>{stats.starsgazers} stars</Important>
+                    </GitHubStat>
+
+                    {lastStargazer && (
+                        <>
+                            <GitHubStat>Last stargazer</GitHubStat>
+                            <GitHubStatImage src={lastStargazer.avatarUrl} />
+                            <GitHubStat>
+                                <Important>{lastStargazer.name}</Important>
+                            </GitHubStat>
+                        </>
+                    )}
+                </>
+            ) : (
+                <GitHubStat>Loading...</GitHubStat>
             )}
-        </OuterContainer>
+        </InnerContainer>
     );
 }

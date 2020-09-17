@@ -14,6 +14,7 @@ import Head from "next/head";
 import ArticleHeader from "../../components/ArticleHeader";
 import { Octokit } from "@octokit/rest";
 import GitHubStatus from "../../components/GitHubStatus";
+import GitHubDownloadButton from "../../components/GitHubDownloadButton";
 
 type ArticlePageProps = {
     article: Article;
@@ -157,10 +158,7 @@ function CodeBlock(props: { value: string; language?: string }) {
 
     return (
         <pre>
-            <code
-                ref={codeRef}
-                className={props.language && `language-${props.language}`}
-            >
+            <code ref={codeRef} className={props.language && `language-${props.language}`}>
                 {props.value}
             </code>
         </pre>
@@ -183,6 +181,9 @@ const ArticleHeaderCard = styled.div`
 `;
 
 const ArticleGitHubCard = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin: 1.5em 0;
 `;
 
@@ -203,6 +204,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                 {article.githubRepo && (
                     <ArticleGitHubCard>
                         <GitHubStatus repo={article.githubRepo} />
+                        <GitHubDownloadButton repo={article.githubRepo} />
                     </ArticleGitHubCard>
                 )}
                 <MarkdownContainer color={article.themeColor}>
