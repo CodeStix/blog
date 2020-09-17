@@ -182,8 +182,9 @@ const ArticleHeaderCard = styled.div`
 
 const ArticleGitHubCard = styled.div`
     display: flex;
+    align-items: flex-end;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     margin: 1.5em 0;
 `;
 
@@ -204,7 +205,10 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                 {article.githubRepo && (
                     <ArticleGitHubCard>
                         <GitHubStatus repo={article.githubRepo} />
-                        <GitHubDownloadButton repo={article.githubRepo} />
+                        <GitHubDownloadButton
+                            style={{ marginBottom: "1em" }}
+                            repo={article.githubRepo}
+                        />
                     </ArticleGitHubCard>
                 )}
                 <MarkdownContainer color={article.themeColor}>
