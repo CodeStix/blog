@@ -7,6 +7,7 @@ thumbnails:
 type: project
 readMinutes: 2
 githubRepo: CodeStix/Beat-360fyer
+updated: "Sep 10 2020"
 ---
 
 <iframe width="100%" height="400px" src="https://www.youtube.com/embed/OZGkLv5ajLU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

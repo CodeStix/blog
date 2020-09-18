@@ -7,22 +7,26 @@ import matter from "gray-matter";
 
 const readdirAsync = util.promisify(fs.readdir);
 const readFileAsync = util.promisify(fs.readFile);
-const statFileAsync = util.promisify(fs.stat);
 export const articlesDir = path.join(process.cwd(), "articles");
 
-export async function getArticles(): Promise<Article[]> {
+export async function getArticles(): Promise<Article[]>
+{
     var files: string[] = [];
-    try {
+    try
+    {
         files = await readdirAsync(articlesDir);
-    } catch (ex) {
+    } catch (ex)
+    {
         console.error("Could not read articles folder: " + ex);
         return [];
     }
 
     var articles = [];
-    for (let i = 0; i < files.length; i++) {
+    for (let i = 0; i < files.length; i++)
+    {
         var file = files[i];
-        if (!file.endsWith(".md")) {
+        if (!file.endsWith(".md"))
+        {
             console.log("Skipping file because no markdown:", file);
             continue;
         }
@@ -34,18 +38,18 @@ export async function getArticles(): Promise<Article[]> {
     return articles;
 }
 
-export async function getArticleWithName(name: string): Promise<Article> {
+export async function getArticleWithName(name: string): Promise<Article>
+{
     const file = path.join(articlesDir, name + ".md");
-    var stat = await statFileAsync(file);
     var md = await readFileAsync(file, {
         encoding: "utf8",
     });
 
     const meta = matter(md);
     return {
-        modified: stat.mtimeMs,
         href: `/article/${name}`,
         markdown: meta.content,
         ...meta.data,
+        updated: Date.parse(meta.data.updated)
     } as Article;
 }

@@ -7,6 +7,7 @@ thumbnails:
 type: tutorial
 readMinutes: 6
 githubRepo: CodeStix/shithead-the-game
+updated: "Sep 17 2020"
 ---
 
 ## What is lexical analysis?

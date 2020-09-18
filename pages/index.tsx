@@ -16,7 +16,8 @@ type IndexProps = {
     recent: Article[];
 };
 
-export default function Index({ recentProjects, recentPosts, recent }: IndexProps) {
+export default function Index({ recentProjects, recentPosts, recent }: IndexProps)
+{
     return (
         <>
             <NavBar />
@@ -41,9 +42,10 @@ export default function Index({ recentProjects, recentPosts, recent }: IndexProp
 }
 
 // called on server
-export const getStaticProps: GetStaticProps = async function () {
+export const getStaticProps: GetStaticProps = async function ()
+{
     var articles = await getArticles();
-    articles = articles.sort((a, b) => b.modified - a.modified);
+    articles = articles.sort((a, b) => b.updated - a.updated);
     var props: IndexProps = {
         recent: articles.splice(0, 2),
         recentProjects: articles.filter((e) => e.type === "project").splice(0, 2),

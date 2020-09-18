@@ -48,7 +48,8 @@ type ArticleHeaderProps = {
     article: Article;
 };
 
-export default function ArticleHeader({ article }: ArticleHeaderProps) {
+export default function ArticleHeader({ article }: ArticleHeaderProps)
+{
     return (
         <Header>
             <HeaderRow>
@@ -59,7 +60,7 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
                 <HeaderDetails>
                     <HeaderDetail>
                         <FontAwesomeIcon icon={faPen} /> Updated{" "}
-                        {new Date(article.modified).toDateString()}
+                        {new Date(article.updated).toDateString()}
                     </HeaderDetail>
                     {article.readMinutes && (
                         <HeaderDetail>
