@@ -15,6 +15,7 @@ import { Octokit } from "@octokit/rest";
 import GitHubStatus from "../../components/GitHubStatus";
 import GitHubDownloadButton from "../../components/GitHubDownloadButton";
 import NavBar from "../../components/NavBar";
+import emoji from "emoji-dictionary";
 
 type ArticlePageProps = {
     article: Article;
@@ -192,6 +193,10 @@ const ArticleGitHubCard = styled.div`
     }
 `;
 
+function emojiRender(text) {
+    return text.value.replace(/:\w+:/gi, (name) => emoji.getUnicode(name));
+}
+
 export default function ArticlePage({ article }: ArticlePageProps) {
     return (
         <>
@@ -215,7 +220,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                 <MarkdownContainer color={article.themeColor}>
                     <ReactMarkdown
                         source={article.markdown}
-                        renderers={{ code: CodeBlock }}
+                        renderers={{ code: CodeBlock, text: emojiRender }}
                         skipHtml={false}
                         escapeHtml={false}
                     />
