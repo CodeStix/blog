@@ -138,9 +138,9 @@ const Container = styled(CenterContainer)`
     transform: rotateX(90deg);
     transform-origin: 0 0;
     width: 100vw;
-    box-shadow: 0 5px 20px #0005;
+    box-shadow: 0 5px 20px #0003;
     backdrop-filter: blur(10px);
-    background: #fff1;
+    background: #9992;
 
     &.shown {
         transition: transform 400ms;
