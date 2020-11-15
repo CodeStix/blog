@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import CenterContainer from "../../components/CenterContainer";
-import { Article } from "../../shared/Article";
+import { Article } from "../../src/Article";
 import BigTitle from "../../components/BigTitle";
-import { getArticleWithName, getArticles } from "../../server/articleLoader";
+import { getArticleWithName, getArticles } from "../../src/articleLoader";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import hljs from "highlight.js";

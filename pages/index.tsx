@@ -5,8 +5,8 @@ import BigTitle from "../components/BigTitle";
 import Title from "../components/Title";
 import Card from "../components/Card";
 import ArticleCard from "../components/ArticleCard";
-import { getArticles } from "../server/articleLoader";
-import { Article } from "../shared/Article";
+import { getArticles } from "../src/articleLoader";
+import { Article } from "../src/Article";
 import NavBar from "../components/NavBar";
 
 type IndexProps = {

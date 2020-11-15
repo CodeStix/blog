@@ -3,7 +3,7 @@ import Card from "./Card";
 import Title from "./Title";
 import styled from "styled-components";
 import Link from "next/link";
-import { Article } from "../shared/Article";
+import { Article } from "../src/Article";
 import { Carousel } from "react-responsive-carousel";
 import ReactPlayer from "react-player";
 import UrlCarousel from "./UrlCarousel";
@@ -52,9 +52,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
     return (
         <Card color={article.themeColor}>
             <Link href="/article/[name]" as={article.href} passHref>
-                <OverlayLink>
-                    {article.tease ?? "Click here to read more!"}
-                </OverlayLink>
+                <OverlayLink>{article.tease ?? "Click here to read more!"}</OverlayLink>
             </Link>
             <ArticleHeader article={article} />
             {article.thumbnails && (

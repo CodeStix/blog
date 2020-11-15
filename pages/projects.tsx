@@ -1,10 +1,10 @@
 import React from "react";
-import { Article } from "../shared/Article";
+import { Article } from "../src/Article";
 import { GetStaticProps } from "next";
 import CenterContainer from "../components/CenterContainer";
 import BigTitle from "../components/BigTitle";
 import ArticleCard from "../components/ArticleCard";
-import { getArticles } from "../server/articleLoader";
+import { getArticles } from "../src/articleLoader";
 import Title from "../components/Title";
 import NavBar from "../components/NavBar";
 

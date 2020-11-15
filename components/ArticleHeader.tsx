@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Title from "./Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faGlasses, faUser } from "@fortawesome/free-solid-svg-icons";
-import { Article } from "../shared/Article";
+import { Article } from "../src/Article";
 
 const Header = styled.div`
     padding: 0.8em;
@@ -48,8 +48,7 @@ type ArticleHeaderProps = {
     article: Article;
 };
 
-export default function ArticleHeader({ article }: ArticleHeaderProps)
-{
+export default function ArticleHeader({ article }: ArticleHeaderProps) {
     return (
         <Header>
             <HeaderRow>
@@ -59,13 +58,11 @@ export default function ArticleHeader({ article }: ArticleHeaderProps)
                 </HeaderTitle>
                 <HeaderDetails>
                     <HeaderDetail>
-                        <FontAwesomeIcon icon={faPen} /> Updated{" "}
-                        {new Date(article.updated).toDateString()}
+                        <FontAwesomeIcon icon={faPen} /> Updated {new Date(article.updated).toDateString()}
                     </HeaderDetail>
                     {article.readMinutes && (
                         <HeaderDetail>
-                            <FontAwesomeIcon icon={faGlasses} />{" "}
-                            {article.readMinutes} minute read
+                            <FontAwesomeIcon icon={faGlasses} /> {article.readMinutes} minute read
                         </HeaderDetail>
                     )}
                     <HeaderDetail>
