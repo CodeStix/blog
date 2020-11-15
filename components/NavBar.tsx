@@ -69,14 +69,14 @@ const NavItem = styled.a`
 
     &:hover {
         /* color: gray; */
-        background-color: #fff1;
+        background-color: #fff2;
     }
 
     @media only screen and (max-width: 600px) {
         width: 100%;
         font-size: 1em;
         border: none;
-        background: #fff1;
+        background: #fff2;
         border-radius: 1em;
         margin-top: 0.5em;
         font-size: 1.2em;
