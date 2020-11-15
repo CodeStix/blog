@@ -60,7 +60,7 @@ type CoffeeIconProps = {
 export default function CoffeeIcon({ style, icon }: CoffeeIconProps) {
     return (
         <Container style={style}>
-            <Icon src={icon ?? "/image/kutnocoffeedarktrans.png"} />
+            <Icon src={icon ?? "/image/icon.png"} />
             <CoffeeSvg x="0" y="0" width="200" height="200" viewBox="0 0 200 200">
                 <g transform="scale(1,1)">
                     <g transform="translate(15, 0.000000)" stroke="#BEBEBE" strokeWidth="10">
