@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../components/NavBar";
 import styled from "styled-components";
 import CenterContainer from "../components/CenterContainer";
 
@@ -62,19 +61,9 @@ export default function CoffeeIcon({ style, icon }: CoffeeIconProps) {
     return (
         <Container style={style}>
             <Icon src={icon ?? "/image/kutnocoffeedarktrans.png"} />
-            <CoffeeSvg
-                x="0"
-                y="0"
-                width="200"
-                height="200"
-                viewBox="0 0 200 200"
-            >
+            <CoffeeSvg x="0" y="0" width="200" height="200" viewBox="0 0 200 200">
                 <g transform="scale(1,1)">
-                    <g
-                        transform="translate(15, 0.000000)"
-                        stroke="#BEBEBE"
-                        strokeWidth="10"
-                    >
+                    <g transform="translate(15, 0.000000)" stroke="#BEBEBE" strokeWidth="10">
                         <g className="smoke-1">
                             <path
                                 id="Shape1"
@@ -82,11 +71,7 @@ export default function CoffeeIcon({ style, icon }: CoffeeIconProps) {
                             ></path>
                         </g>
                     </g>
-                    <g
-                        transform="translate(24.000000, 0.000000)"
-                        stroke="#BEBEBE"
-                        strokeWidth="10"
-                    >
+                    <g transform="translate(24.000000, 0.000000)" stroke="#BEBEBE" strokeWidth="10">
                         <g className="smoke-2">
                             <path
                                 id="Shape1"
@@ -94,11 +79,7 @@ export default function CoffeeIcon({ style, icon }: CoffeeIconProps) {
                             ></path>
                         </g>
                     </g>
-                    <g
-                        transform="translate(6.000000, 0.000000)"
-                        stroke="#BEBEBE"
-                        strokeWidth="10"
-                    >
+                    <g transform="translate(6.000000, 0.000000)" stroke="#BEBEBE" strokeWidth="10">
                         <g className="smoke-3">
                             <path
                                 id="Shape1"

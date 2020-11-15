@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import CenterContainer from "../../components/CenterContainer";
-import NavBar from "../../components/NavBar";
 import { Article } from "../../shared/Article";
 import BigTitle from "../../components/BigTitle";
 import { getArticleWithName, getArticles } from "../../server/articleLoader";
@@ -198,7 +197,6 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                 <meta name="keywords" content="Programming, Coding" />
                 <meta name="author" content="Stijn Rogiest" />
             </Head>
-            <NavBar />
             <ScrollNavBar />
             <CenterContainer>
                 <ArticleHeaderCard>
@@ -207,10 +205,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                 {article.githubRepo && (
                     <ArticleGitHubCard>
                         <GitHubStatus repo={article.githubRepo} />
-                        <GitHubDownloadButton
-                            style={{ marginBottom: "1em" }}
-                            repo={article.githubRepo}
-                        />
+                        <GitHubDownloadButton style={{ marginBottom: "1em" }} repo={article.githubRepo} />
                     </ArticleGitHubCard>
                 )}
                 <MarkdownContainer color={article.themeColor}>

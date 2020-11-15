@@ -20,14 +20,12 @@ const InnerContainer = styled.div`
 type CenterContainerProps = {
     children: React.ReactNode;
     style?: React.CSSProperties;
+    className?: string;
 };
 
-export default function CenterContainer({
-    children,
-    style,
-}: CenterContainerProps) {
+export default function CenterContainer({ children, style, className }: CenterContainerProps) {
     return (
-        <OuterContainer style={style}>
+        <OuterContainer style={style} className={className}>
             <InnerContainer>{children}</InnerContainer>
         </OuterContainer>
     );

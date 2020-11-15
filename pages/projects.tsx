@@ -1,7 +1,6 @@
 import React from "react";
 import { Article } from "../shared/Article";
 import { GetStaticProps } from "next";
-import NavBar from "../components/NavBar";
 import CenterContainer from "../components/CenterContainer";
 import BigTitle from "../components/BigTitle";
 import ArticleCard from "../components/ArticleCard";
@@ -16,7 +15,6 @@ type ProjectsProps = {
 export default function Projects({ projects }: ProjectsProps) {
     return (
         <>
-            <NavBar />
             <ScrollNavBar />
             <CenterContainer>
                 <Title>Projects</Title>

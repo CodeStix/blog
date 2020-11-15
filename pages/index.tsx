@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { GetStaticProps } from "next";
-import NavBar from "../components/NavBar";
 import CenterContainer from "../components/CenterContainer";
 import BigTitle from "../components/BigTitle";
 import Title from "../components/Title";
@@ -16,11 +15,9 @@ type IndexProps = {
     recent: Article[];
 };
 
-export default function Index({ recentProjects, recentPosts, recent }: IndexProps)
-{
+export default function Index({ recentProjects, recentPosts, recent }: IndexProps) {
     return (
         <>
-            <NavBar />
             <ScrollNavBar />
             <CenterContainer>
                 {recent.map((post) => (
@@ -42,8 +39,7 @@ export default function Index({ recentProjects, recentPosts, recent }: IndexProp
 }
 
 // called on server
-export const getStaticProps: GetStaticProps = async function ()
-{
+export const getStaticProps: GetStaticProps = async function () {
     var articles = await getArticles();
     articles = articles.sort((a, b) => b.updated - a.updated);
     var props: IndexProps = {
