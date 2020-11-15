@@ -14,7 +14,7 @@ import ArticleHeader from "../../components/ArticleHeader";
 import { Octokit } from "@octokit/rest";
 import GitHubStatus from "../../components/GitHubStatus";
 import GitHubDownloadButton from "../../components/GitHubDownloadButton";
-import ScrollNavBar from "../../components/ScrollNavBar";
+import NavBar from "../../components/NavBar";
 
 type ArticlePageProps = {
     article: Article;
@@ -197,7 +197,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                 <meta name="keywords" content="Programming, Coding" />
                 <meta name="author" content="Stijn Rogiest" />
             </Head>
-            <ScrollNavBar />
+            <NavBar />
             <CenterContainer>
                 <ArticleHeaderCard>
                     <ArticleHeader article={article} />

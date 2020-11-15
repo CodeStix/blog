@@ -152,7 +152,7 @@ const Filler = styled.div`
     height: ${navBarHeight};
 `;
 
-export default function ScrollNavBar() {
+export default function NavBar() {
     const [openMenu, setOpenMenu] = useState(false);
 
     return (

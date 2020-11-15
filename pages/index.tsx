@@ -7,7 +7,7 @@ import Card from "../components/Card";
 import ArticleCard from "../components/ArticleCard";
 import { getArticles } from "../server/articleLoader";
 import { Article } from "../shared/Article";
-import ScrollNavBar from "../components/ScrollNavBar";
+import NavBar from "../components/NavBar";
 
 type IndexProps = {
     recentProjects: Article[];
@@ -18,7 +18,7 @@ type IndexProps = {
 export default function Index({ recentProjects, recentPosts, recent }: IndexProps) {
     return (
         <>
-            <ScrollNavBar />
+            <NavBar />
             <CenterContainer>
                 {recent.map((post) => (
                     <ArticleCard key={post.name} article={post} />
