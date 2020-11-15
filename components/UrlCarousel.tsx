@@ -31,7 +31,7 @@ const ResourceImage = styled.div<{ src: string; height: string }>`
     background: url("${(props) => props.src}");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: left;
+    background-position: left bottom;
 `;
 
 export default function UrlCarousel(props: UrlCarouselProps) {
@@ -60,10 +60,7 @@ export default function UrlCarousel(props: UrlCarouselProps) {
                             muted={true}
                         />
                     ) : (
-                        <ResourceImage
-                            src={src}
-                            height={props.height ?? defaultHeight}
-                        />
+                        <ResourceImage src={src} height={props.height ?? defaultHeight} />
                     )}
                 </ResourceContainer>
             ))}
