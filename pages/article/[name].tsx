@@ -169,7 +169,7 @@ const ArticleHeaderCard = styled.div`
     position: relative;
     background: #fff1;
     padding: 0.5em;
-    margin-top: 1em;
+    margin: 2.2em 0;
     border-radius: 1em;
     /* max-height: 40vh; */
     /* overflow: auto; */
@@ -186,6 +186,10 @@ const ArticleGitHubCard = styled.div`
     justify-content: space-between;
     flex-wrap: wrap-reverse;
     margin: 1.5em 0;
+
+    @media only screen and (max-width: 600px) {
+        font-size: 0.8em;
+    }
 `;
 
 export default function ArticlePage({ article }: ArticlePageProps) {
