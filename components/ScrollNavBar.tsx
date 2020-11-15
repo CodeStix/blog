@@ -7,10 +7,6 @@ import styled from "styled-components";
 import CenterContainer from "./CenterContainer";
 import CoffeeIcon from "./CoffeeIcon";
 
-type ScrollNavBarProps = {
-    threshold?: number;
-};
-
 const navBarHeight = "3.5em";
 
 const Nav = styled.nav`
@@ -156,27 +152,12 @@ const Filler = styled.div`
     height: ${navBarHeight};
 `;
 
-export default function ScrollNavBar({ threshold }: ScrollNavBarProps) {
-    const [visible, setVisible] = useState<boolean>(false);
+export default function ScrollNavBar() {
     const [openMenu, setOpenMenu] = useState(false);
-    const scrollInfoRef = useRef({ previousOffset: 0 });
-
-    function onScroll() {
-        setVisible(() => {
-            let newState = scrollInfoRef.current.previousOffset > window.pageYOffset;
-            scrollInfoRef.current.previousOffset = window.pageYOffset;
-            return newState;
-        });
-    }
-
-    useEffect(() => {
-        window.addEventListener("scroll", onScroll);
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
 
     return (
         <>
-            <Container className={visible && "shown"}>
+            <Container className="shown">
                 <Nav className={openMenu && "navOpen"}>
                     <NavMain>
                         <NavIcon>
