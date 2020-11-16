@@ -54,12 +54,13 @@ const Icon = styled.img`
 
 type CoffeeIconProps = {
     style?: React.CSSProperties;
+    className?: string;
     icon?: string;
 };
 
-export default function CoffeeIcon({ style, icon }: CoffeeIconProps) {
+export default function CoffeeIcon({ style, icon, className }: CoffeeIconProps) {
     return (
-        <Container style={style}>
+        <Container style={style} className={className}>
             <Icon src={icon ?? "/image/icon.png"} />
             <CoffeeSvg x="0" y="0" width="200" height="200" viewBox="0 0 200 200">
                 <g transform="scale(1,1)">
