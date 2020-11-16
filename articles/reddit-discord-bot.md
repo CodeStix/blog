@@ -6,6 +6,7 @@ thumbnails:
     - /image/reddit-discord-bot/thumbnail.gif
 type: project
 tease: Click here to get the invite link.
+updated: "Oct 25 2020"
 ---
 
 ![thumbnail](/image/reddit-discord-bot/thumbnail.gif)
@@ -21,7 +22,7 @@ The bot uses the `r/` prefix:
 -   `r/pics top`: shows a top post.
 -   `r/pics week` or `r/pics top week`: shows a top post from the last week. You can also use **hour**, **day**, **month**, **year** and **all**.
 
-:info: **Protip:** You can use the `r//` shortcut to repeat your previous input.
+:information_source: **Protip:** You can use the `r//` shortcut to repeat your previous input.
 
 **:warning: To enable NSFW reddit content (e.g. r/fiftyfifty), you MUST mark the Discord channel as NSFW.**
 
