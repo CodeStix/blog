@@ -10,6 +10,7 @@ import { Article } from "../src/Article";
 import NavBar from "../components/NavBar";
 import styled from "styled-components";
 import CoffeeIcon from "../components/CoffeeIcon";
+import Button from "../components/Button";
 
 type IndexProps = {
     recentProjects: Article[];
@@ -74,12 +75,12 @@ export default function Index({ recentProjects, recentPosts, recent }: IndexProp
                     <ArticleCard key={post.name} article={post} />
                 ))}
 
-                {recentPosts.length > 0 && <Title>Recent posts</Title>}
+                {recentPosts.length > 0 && <Title>Other recent posts</Title>}
                 {recentPosts.map((post) => (
                     <ArticleCard key={post.name} article={post} />
                 ))}
 
-                {recentProjects.length > 0 && <Title>Recent projects</Title>}
+                {recentProjects.length > 0 && <Title>Other recent projects</Title>}
                 {recentProjects.map((project) => (
                     <ArticleCard key={project.name} article={project} />
                 ))}
