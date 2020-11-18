@@ -12,6 +12,7 @@ type UrlCarouselProps = {
     interval?: number;
     autoPlay?: boolean;
     showArrows?: boolean;
+    imageAlign?: string;
 };
 
 const ResourceContainer = styled.div`
@@ -24,14 +25,14 @@ const ResourceContainer = styled.div`
     }
 `;
 
-const ResourceImage = styled.div<{ src: string; height: string }>`
+const ResourceImage = styled.div<{ src: string; height: string; imageAlign?: string }>`
     width: 100%;
     height: ${(props) => props.height};
     /* border-radius: 1em 1em 0 0; */
     background: url("${(props) => props.src}");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: left bottom;
+    background-position: ${(props) => props.imageAlign ?? "bottom left"};
 `;
 
 export default function UrlCarousel(props: UrlCarouselProps) {
@@ -60,7 +61,7 @@ export default function UrlCarousel(props: UrlCarouselProps) {
                             muted={true}
                         />
                     ) : (
-                        <ResourceImage src={src} height={props.height ?? defaultHeight} />
+                        <ResourceImage imageAlign={props.imageAlign} src={src} height={props.height ?? defaultHeight} />
                     )}
                 </ResourceContainer>
             ))}

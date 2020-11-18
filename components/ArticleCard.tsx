@@ -57,7 +57,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
             <ArticleHeader article={article} />
             {article.thumbnails && (
                 <CarouselContainer>
-                    <UrlCarousel urls={article.thumbnails} />
+                    <UrlCarousel imageAlign={article.thumbnailAlign} urls={article.thumbnails} />
                 </CarouselContainer>
             )}
         </Card>
