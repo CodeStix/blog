@@ -7,6 +7,7 @@ thumbnails:
 type: project
 tease: Click here to get the invite link.
 updated: "Oct 25 2020"
+githubRepo: CodeStix/reddit-discord-bot
 ---
 
 ![thumbnail](/image/reddit-discord-bot/thumbnail.gif)
@@ -14,6 +15,8 @@ updated: "Oct 25 2020"
 You can invite this bot [here](https://discord.com/oauth2/authorize?client_id=711524405163065385&scope=bot&permissions=326720).
 
 ## Usage :computer:
+
+**:warning: To enable NSFW reddit content (e.g. r/fiftyfifty), you MUST mark the Discord channel as NSFW.**
 
 The bot uses the `r/` prefix:
 
@@ -23,8 +26,6 @@ The bot uses the `r/` prefix:
 -   `r/pics week` or `r/pics top week`: shows a top post from the last week. You can also use **hour**, **day**, **month**, **year** and **all**.
 
 :information_source: **Protip:** You can use the `r//` shortcut to repeat your previous input.
-
-**:warning: To enable NSFW reddit content (e.g. r/fiftyfifty), you MUST mark the Discord channel as NSFW.**
 
 ![bot prefix usage](https://github.com/CodeStix/reddit-discord-bot/raw/master/images/redditprefix.png)
 
