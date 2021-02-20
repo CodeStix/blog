@@ -28,14 +28,17 @@ const CoffeeSvg = styled.svg`
     }
 
     .smoke-1 {
+        opacity: 0;
         animation: shift 5s ease-out 1.2s infinite;
     }
 
     .smoke-2 {
+        opacity: 0;
         animation: shift 4s ease-out 0.6s infinite;
     }
 
     .smoke-3 {
+        opacity: 0;
         animation: shift 4.5s ease-out 1.5s infinite;
     }
 `;
