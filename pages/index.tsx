@@ -5,7 +5,7 @@ import BigTitle from "../components/BigTitle";
 import Title from "../components/Title";
 import Card from "../components/Card";
 import ArticleCard from "../components/ArticleCard";
-import { getArticles } from "../src/articleLoader";
+import { getArticles, getReleases } from "../src/articleLoader";
 import { Article } from "../src/Article";
 import NavBar from "../components/NavBar";
 import styled from "styled-components";
@@ -167,7 +167,7 @@ export const getStaticProps: GetStaticProps = async function () {
     var articles = await getArticles();
     articles = articles.sort((a, b) => b.updated - a.updated);
     var props: IndexProps = {
-        releases: [],
+        releases: await getReleases(),
         recent: articles.splice(0, 2),
         recentProjects: articles.filter((e) => e.type === "project").splice(0, 2),
         recentPosts: articles.filter((e) => e.type === "post").splice(0, 2),

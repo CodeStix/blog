@@ -4,6 +4,7 @@ import util from "util";
 import fs from "fs";
 import { Article } from "./Article";
 import matter from "gray-matter";
+import { Release } from "./Release";
 
 const readdirAsync = util.promisify(fs.readdir);
 const readFileAsync = util.promisify(fs.readFile);
@@ -46,4 +47,14 @@ export async function getArticleWithName(name: string): Promise<Article> {
         ...meta.data,
         updated: Date.parse(meta.data.updated),
     } as Article;
+}
+
+export async function getReleases() {
+    const file = path.join(articlesDir, "releases.json");
+    var obj = JSON.parse(
+        await readFileAsync(file, {
+            encoding: "utf8",
+        })
+    );
+    return obj.releases as Release[];
 }

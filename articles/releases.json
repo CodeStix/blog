@@ -1,0 +1,11 @@
+{
+    "releases": [
+        {
+            "name": "Discord Reddit bot",
+            "description": "An amazing Discord bot that connects with reddit. Has video downloading support, 50/50 spoilers ...",
+            "color": "#ffa500",
+            "url": "https://top.gg/user/417028314750910466",
+            "thumbnail": "/image/reddit-discord-bot/thumbnail.gif"
+        }
+    ]
+}
