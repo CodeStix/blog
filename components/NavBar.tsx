@@ -171,11 +171,8 @@ export default function NavBar() {
                         <Link href="/projects" as="/projects" passHref>
                             <NavItem>Projects</NavItem>
                         </Link>
-                        {/* <Link href="/test" as="/test" passHref>
-                        <NavItem>Test</NavItem>
-                    </Link> */}
                         <NavSocialIcons>
-                            <Link href="https://github.com/CodeStix/blog" passHref>
+                            <Link href="https://github.com/CodeStix" passHref>
                                 <NavSocialIcon>
                                     <FontAwesomeIcon icon={faGithub} />
                                 </NavSocialIcon>
@@ -185,11 +182,11 @@ export default function NavBar() {
                                     <FontAwesomeIcon icon={faTwitter} />
                                 </NavSocialIcon>
                             </Link>
-                            <Link href="https://discord.gg/gnDwyU" passHref>
+                            {/* <Link href="https://discord.gg/gnDwyU" passHref>
                                 <NavSocialIcon>
                                     <FontAwesomeIcon icon={faDiscord} />
                                 </NavSocialIcon>
-                            </Link>
+                            </Link> */}
                         </NavSocialIcons>
                     </NavSide>
                     <MenuButton onClick={() => setOpenMenu(!openMenu)}>
