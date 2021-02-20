@@ -13,11 +13,13 @@ import CoffeeIcon from "../components/CoffeeIcon";
 import Button from "../components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Release } from "../src/Release";
 
 type IndexProps = {
     recentProjects: Article[];
     recentPosts: Article[];
     recent: Article[];
+    releases: Release[];
 };
 
 const WelcomeCard = styled.div`
@@ -69,17 +71,18 @@ const ReleaseCard = styled.a<{ color: string; url: string }>`
     max-width: 400px;
     flex-grow: 1;
     color: ${(e) => e.color};
-    border: 3px solid ${(e) => e.color};
+    border: 2px solid ${(e) => e.color};
     padding: 1em 3em 1em 1.2em;
-    border-radius: 0.4em;
+    border-radius: 0.5em;
+
     background-image: linear-gradient(to right, #0005 0%, #1b1b1b 80%), url("${(e) => e.url}");
     background-size: contain;
     transition: 200ms;
 
     &:hover {
         transition: 200ms;
-        color: white;
-        border-color: white;
+        color: #eee;
+        border-color: #eee;
 
         svg {
             transition: 100ms;
@@ -111,7 +114,7 @@ const ReleaseArrow = styled(FontAwesomeIcon)`
     height: 100%;
 `;
 
-export default function Index({ recentProjects, recentPosts, recent }: IndexProps) {
+export default function Index({ recentProjects, recentPosts, recent, releases }: IndexProps) {
     return (
         <>
             <NavBar />
@@ -124,20 +127,20 @@ export default function Index({ recentProjects, recentPosts, recent }: IndexProp
                     </WelcomeText>
                 </WelcomeCard>
 
-                <Title>Releases</Title>
-                <ReleaseContainer>
-                    <ReleaseCard
-                        url="/image/reddit-discord-bot/thumbnail.gif"
-                        color="#ffa500"
-                        href="https://top.gg/bot/711524405163065385"
-                        target="_blank"
-                        style={{ textDecoration: "none" }}
-                    >
-                        <ReleaseTitle>Reddit Discord bot</ReleaseTitle>
-                        <ReleaseDescription>An amazing Discord bot that connects with Reddit. Features video playback support ...</ReleaseDescription>
-                        <ReleaseArrow icon={faArrowRight} />
-                    </ReleaseCard>
-                </ReleaseContainer>
+                {releases.length > 0 && (
+                    <>
+                        <Title>Releases</Title>
+                        <ReleaseContainer>
+                            {releases.map((e) => (
+                                <ReleaseCard url={e.thumbnail} color={e.color} href={e.url} target="_blank">
+                                    <ReleaseTitle>{e.name}</ReleaseTitle>
+                                    {e.description && <ReleaseDescription>{e.description}</ReleaseDescription>}
+                                    <ReleaseArrow icon={faArrowRight} />
+                                </ReleaseCard>
+                            ))}
+                        </ReleaseContainer>
+                    </>
+                )}
 
                 <Title>Latest activity</Title>
 
@@ -164,6 +167,7 @@ export const getStaticProps: GetStaticProps = async function () {
     var articles = await getArticles();
     articles = articles.sort((a, b) => b.updated - a.updated);
     var props: IndexProps = {
+        releases: [],
         recent: articles.splice(0, 2),
         recentProjects: articles.filter((e) => e.type === "project").splice(0, 2),
         recentPosts: articles.filter((e) => e.type === "post").splice(0, 2),
