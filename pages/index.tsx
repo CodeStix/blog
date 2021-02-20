@@ -141,7 +141,7 @@ export default function Index({ recentProjects, recentPosts, recent, releases }:
                         <Title>Releases</Title>
                         <ReleaseContainer>
                             {releases.map((e) => (
-                                <ReleaseCard url={e.thumbnail} color={e.color} href={e.url} target="_blank">
+                                <ReleaseCard key={e.name} url={e.thumbnail} color={e.color} href={e.url} target="_blank">
                                     <ReleaseTitle>{e.name}</ReleaseTitle>
                                     {e.description && <ReleaseDescription>{e.description}</ReleaseDescription>}
                                     <ReleaseArrow icon={faArrowRight} />

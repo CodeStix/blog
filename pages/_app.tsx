@@ -11,18 +11,12 @@ export default function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Poppins&family=Rubik&display=swap"
-                    rel="stylesheet"
-                />
-                <script
-                    data-ad-client="ca-pub-2423230292916733"
-                    async
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-                ></script>
+                <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Rubik&display=swap" rel="stylesheet" />
+                <link rel="shortcut icon" href="/favicon.png" />
+                <script data-ad-client="ca-pub-2423230292916733" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                 <style>{dom.css()}</style>
-                <title>Stijn Rogiest / codestix</title>
-                <meta name="description" content="The home page of codestix' hobby programming work!" />
+                <title>codestix</title>
+                <meta name="description" content="The home page of codestix' work!" />
                 <meta name="keywords" content="Programming, Coding, Blog" />
                 <meta name="author" content="Stijn Rogiest" />
             </Head>
