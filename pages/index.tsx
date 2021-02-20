@@ -60,23 +60,30 @@ const WelcomeText = styled.p`
 `;
 
 const ReleaseContainer = styled.div`
-    display: flex;
-    justify-content: stretch;
+    margin: 1.2em 0;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    @media only screen and (max-width: 700px) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 const ReleaseCard = styled.a<{ color: string; url: string }>`
     position: relative;
     display: block;
     text-decoration: none;
-    max-width: 400px;
     flex-grow: 1;
+
     color: ${(e) => e.color};
     border: 2px solid ${(e) => e.color};
-    padding: 1em 3em 1em 1.2em;
+    padding: 0.8em 3em 0.8em 1.1em;
     border-radius: 0.5em;
 
     background-image: linear-gradient(to right, #0005 0%, #1b1b1b 80%), url("${(e) => e.url}");
-    background-size: contain;
+    background-size: cover;
+    background-repeat: repeat-x;
     transition: 200ms;
 
     &:hover {
@@ -103,6 +110,8 @@ const ReleaseDescription = styled.p`
     font-size: 0.8em;
     padding: 0 1em 0 0;
     color: white;
+    overflow: hidden;
+    max-height: 73px;
 `;
 
 const ReleaseArrow = styled(FontAwesomeIcon)`

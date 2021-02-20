@@ -6,6 +6,27 @@
             "color": "#ffa500",
             "url": "https://top.gg/user/417028314750910466",
             "thumbnail": "/image/reddit-discord-bot/thumbnail.gif"
+        },
+        {
+            "name": "Beat-360fyer",
+            "description": "Use this tool to convert a standard Beat Saber level into a 360 degree one!",
+            "color": "#00A3FF",
+            "url": "https://github.com/CodeStix/Beat-360fyer",
+            "thumbnail": "https://github.com/CodeStix/Beat-360fyer/raw/master/Build/Demos/beatsaber.gif"
+        },
+        {
+            "name": "Shithead the game",
+            "description": "An online version of the card game 'shithead'.",
+            "color": "#afa",
+            "url": "http://shithead.codestix.nl",
+            "thumbnail": ""
+        },
+        {
+            "name": "FNAFOnline",
+            "description": "A multiplayer version of the original FNAF1 horror game.",
+            "color": "#ff0",
+            "url": "https://gamejolt.com/games/FNAF-online/397267",
+            "thumbnail": "https://m.gjcdn.net/game-screenshot/1000/5479706-gf35rjrk-v4.webp"
         }
     ]
 }
