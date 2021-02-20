@@ -17,14 +17,14 @@
         {
             "name": "Shithead the game",
             "description": "An online version of the card game 'shithead'.",
-            "color": "#afa",
+            "color": "#ff0",
             "url": "http://shithead.codestix.nl",
             "thumbnail": ""
         },
         {
             "name": "FNAFOnline",
             "description": "A multiplayer version of the original FNAF1 horror game.",
-            "color": "#ff0",
+            "color": "#e7e",
             "url": "https://gamejolt.com/games/FNAF-online/397267",
             "thumbnail": "https://m.gjcdn.net/game-screenshot/1000/5479706-gf35rjrk-v4.webp"
         }
