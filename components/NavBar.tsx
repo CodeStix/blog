@@ -1,4 +1,4 @@
-import { faGithub, faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faTwitter, faDiscord, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -182,11 +182,11 @@ export default function NavBar() {
                                     <FontAwesomeIcon icon={faTwitter} />
                                 </NavSocialIcon>
                             </Link>
-                            {/* <Link href="https://discord.gg/gnDwyU" passHref>
+                            <Link href="https://www.youtube.com/channel/UCCu73S9utCBNLpDj-elBfkg" passHref>
                                 <NavSocialIcon>
-                                    <FontAwesomeIcon icon={faDiscord} />
+                                    <FontAwesomeIcon icon={faYoutube} />
                                 </NavSocialIcon>
-                            </Link> */}
+                            </Link>
                         </NavSocialIcons>
                     </NavSide>
                     <MenuButton onClick={() => setOpenMenu(!openMenu)}>
