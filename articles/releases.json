@@ -27,6 +27,13 @@
             "color": "#e7e",
             "url": "https://gamejolt.com/games/FNAF-online/397267",
             "thumbnail": "https://m.gjcdn.net/game-screenshot/1000/5479706-gf35rjrk-v4.webp"
+        },
+        {
+            "name": "typed-react-form",
+            "description": "A fast, completely type-checked React form state manager.",
+            "color": "#aaaaff",
+            "url": "https://github.com/CodeStix/typed-react-form",
+            "thumbnail": "https://raw.githubusercontent.com/CodeStix/typed-react-form/master/example/public/thumb.png"
         }
     ]
 }
